@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research Proposal – Ganesh Bhatkar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f9f9;
+      color: #2f3e46;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #005f73;
+      padding: 20px 0;
+    }
+    .navbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fefae0;
+      text-decoration: none;
+    }
+    .nav-links a {
+      color: #fefae0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .content {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #0a9396;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      border-bottom: 3px solid #94d2bd;
+      padding-bottom: 10px;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      border-bottom: 2px solid #94d2bd;
+      padding-bottom: 8px;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 1.2em;
+    }
+    ul {
+      padding-left: 1.3em;
+      margin-bottom: 1.2em;
+    }
+    ul li {
+      margin-bottom: 0.4em;
+    }
+    p {
+      margin-bottom: 1em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+      margin-bottom: 2em;
+    }
+    th, td {
+      border: 1px solid #94d2bd;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #e0f1f1;
+      color: #005f73;
+    }
+    footer {
+      background-color: #005f73;
+      color: #fefae0;
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+    a {
+      color: #0a9396;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <a href="index.html" class="logo">Ganesh Bhatkar</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="resume.html">Resume</a>
+      <a href="blog.html">Blog</a>
+    </div>
+  </nav>
+</header>
+
+<main class="content">
+  <h1>Research Proposal</h1>
+
+  <h2>Title</h2>
+  <p><strong>Design and Development of a Modular 3-Wheeled Urban Ground Robot with Swappable Mission Payloads Using ROS 2 and Edge-AI for Smart City Applications</strong></p>
+
+  <h2>Abstract</h2>
+  <p>
+    With rapid advancements in smart city infrastructure—especially in Japan—there is an increasing need for adaptable urban robotic systems capable of efficiently performing diverse public service roles. This research proposes the design and development of a compact, modular 3-wheeled Unmanned Ground Vehicle (UGV) tailored for urban environments.
+  </p>
+  <p>
+    The UGV will feature swappable mission payloads specialized for tasks such as surveillance, autonomous cleaning, tourism guidance, and security patrol. By leveraging ROS 2 for flexible and robust robotic control alongside Edge-AI platforms like NVIDIA Jetson for real-time perception and decision-making, this project aims to create a scalable and cost-effective robotic platform.
+  </p>
+  <p>
+    The development aligns closely with Japan’s smart city initiatives led by NEDO and MLIT. The outcome will be a functional, field-tested prototype demonstrating modularity, autonomy, and adaptability suitable for dynamic urban settings.
+  </p>
+
+  <h2>Introduction</h2>
+  <p>
+    Modern urban environments in Japan face multiple challenges such as an aging population, labor shortages, increased tourism, and growing safety concerns. To address these issues, smart city initiatives are driving the integration of advanced technologies and automation into public services. However, most deployed urban robots are single purpose, requiring different platforms for surveillance, cleaning, or tourism assistance. This leads to higher operational costs and inefficiencies.
+  </p>
+  <p>
+    This research proposes the design and development of a compact, modular 3-wheeled Unmanned Ground Vehicle (UGV) optimized for urban mobility. The UGV will support swappable mission payloads, allowing it to perform a variety of civic tasks with a single adaptable platform. Its compact size ensures maneuverability in narrow urban spaces, while its modularity enables scalable deployment across different sectors. Leveraging ROS 2 will provide robust, flexible software architecture, and the integration of Edge-AI will enable real-time perception and decision-making without relying on cloud connectivity. This project aligns closely with Japan’s smart city goals and aims to contribute practical, cost-effective robotic solutions for future urban societies.
+  </p>
+
+  <h2>Literature Review</h2>
+  <p>
+    Recent studies have highlighted both the challenges and the potential of modular Unmanned Ground Vehicles (UGVs) in urban environments. Aravantinos et al. (2023) emphasize the need for unified control systems and hot-swappable payload capabilities in modular UGVs to enable flexible mission adaptation. ROS 2, with its distributed and lifecycle-managed nodes, offers a promising middleware framework to support dynamic payload integration and modularity.
+  </p>
+  <p>
+    Edge-AI technologies, as discussed by Alzubaidi et al. (2020), are crucial for enabling robots to operate with minimal latency and bandwidth constraints, which is especially important in densely populated urban areas. While Japan’s NEDO and MLIT projects have driven significant advancements in smart city robotics, their focus has largely been on task-specific robots, which limits scalability and flexibility.
+  </p>
+  <p>
+    Studies by Yamato et al. (2022) and Kanda et al. (2019) underline the importance of socially aware robots that can adapt to multiple roles within urban spaces. However, there remains a significant gap in the deployment of multi-role modular UGVs capable of switching seamlessly between various urban tasks. This research aims to address that gap by integrating modular hardware design with AI-driven autonomy to create a versatile urban robotic platform.
+  </p>
+
+  <h2>Research Objectives</h2>
+  <ul>
+    <li>Design and fabricate a compact, 3-wheeled UGV optimized for urban mobility.</li>
+    <li>Develop four swappable payload modules for:
+      <ul>
+        <li>Urban surveillance and safety monitoring</li>
+        <li>Autonomous cleaning and sanitation</li>
+        <li>Navigation and tourism guidance</li>
+        <li>Security patrol with public assistance</li>
+      </ul>
+    </li>
+    <li>Implement a ROS 2-based modular software stack for dynamic payload recognition and integration.</li>
+    <li>Integrate Edge-AI models for real-time object detection, path planning, and multilingual voice interaction.</li>
+    <li>Simulate and test the system in realistic urban smart city scenarios.</li>
+  </ul>
+
+  <h2>Methodology</h2>
+  <ol>
+    <li><strong>Mechanical Design & Payload Engineering:</strong>
+      <ul>
+        <li>CAD design and 3D prototyping of the UGV chassis with standardized docking for quick payload swaps.</li>
+        <li>Payload modules include:
+          <ul>
+            <li>Surveillance: 360° cameras, infrared sensors</li>
+            <li>Cleaning: Suction motor, waste bin, sweeper mechanism</li>
+            <li>Tour Guide: Touchscreen display, multilingual voice output, QR code scanner</li>
+            <li>Security: Siren, alarm lights, emergency panic button</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><strong>ROS 2-Based Software Architecture:</strong>
+      <ul>
+        <li>Develop lifecycle-managed ROS 2 nodes and plugins for payload hot swap.</li>
+        <li>Integrate Visual SLAM combining LIDAR and camera data.</li>
+        <li>Implement path planning and real-time obstacle avoidance using the Nav2 stack.</li>
+      </ul>
+    </li>
+    <li><strong>Edge-AI Integration:</strong>
+      <ul>
+        <li>Deploy onboard AI models on NVIDIA Jetson Xavier or Nano.</li>
+        <li>Use object/person detection models such as YOLOv8 or MobileNet-SSD.</li>
+        <li>Implement multilingual voice interaction via Vosk or Whisper engines.</li>
+      </ul>
+    </li>
+    <li><strong>Simulation & Field Trials:</strong>
+      <ul>
+        <li>Use Gazebo simulator to validate mission modes.</li>
+        <li>Conduct real-world testing in controlled urban environments such as university campuses.</li>
+      </ul>
+    </li>
+    <li><strong>Evaluate key performance indicators:</strong> mission success rate, response time, and payload swap efficiency.</li>
+  </ol>
+
+  <h2>Timeline: Total Duration 24 months</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Duration</th>
+        <th>Activities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Research Planning & Setup</td>
+        <td>3 months</td>
+        <td>Literature review, component sourcing, initial design</td>
+      </tr>
+      <tr>
+        <td>Mechanical & Module Prototyping</td>
+        <td>5 months</td>
+        <td>Chassis and module fabrication, integration</td>
+      </tr>
+      <tr>
+        <td>Software Development (ROS 2)</td>
+        <td>5 months</td>
+        <td>Navigation, SLAM, control stack development</td>
+      </tr>
+      <tr>
+        <td>AI Model Integration & Testing</td>
+        <td>3 months</td>
+        <td>AI training, voice recognition setup</td>
+      </tr>
+      <tr>
+        <td>Simulation & Field Trials</td>
+        <td>5 months</td>
+        <td>Real-world deployment, performance evaluation</td>
+      </tr>
+      <tr>
+        <td>Final Evaluation & Documentation</td>
+        <td>3 months</td>
+        <td>Report writing, thesis, publication preparation</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Expected Outcomes</h2>
+  <ul>
+    <li>A fully functional modular 3-wheeled UGV prototype.</li>
+    <li>Demonstrated real-world use cases in tourism, safety, cleaning, and security.</li>
+    <li>A ROS 2 modular software framework enabling rapid mission reconfiguration.</li>
+    <li>Onboard Edge-AI integration for autonomous urban deployment.</li>
+    <li>Publications in international robotics conferences and journals.</li>
+    <li>Potential collaborations with Japanese smart city projects and industry partners.</li>
+  </ul>
+
+  <h2>References</h2>
+  <ul>
+    <li>Aravantinos, T., et al. (2023). Recent developments in modular unmanned ground vehicles: A review. Robotics and Autonomous Systems, Elsevier.</li>
+    <li>ROS 2 Documentation. Open Robotics. <a href="https://docs.ros.org" target="_blank" rel="noopener noreferrer">https://docs.ros.org</a></li>
+    <li>Alzubaidi, A., et al. (2020). Edge Computing for Robotics: Applications, Technologies, and Challenges. arXiv:1909.08747</li>
+    <li>NVIDIA Developer Blog. Implementing Robotics Applications with ROS 2 and AI on Jetson. <a href="https://developer.nvidia.com/blog" target="_blank" rel="noopener noreferrer">https://developer.nvidia.com/blog</a></li>
+    <li>Yamato, Y., et al. (2022). Smart City Robotics in Japan. IEEE Access.</li>
+    <li>Kanda, T., et al. (2019). Understanding people’s responses to autonomous service robots in public spaces. International Journal of Social Robotics, Springer.</li>
+    <li>NEDO Smart City Reports. <a href="https://www.nedo.go.jp/english" target="_blank" rel="noopener noreferrer">https://www.nedo.go.jp/english</a></li>
+    <li>IROS 2024 Accepted Papers. <a href="https://iros2024-abudhabi.org/accepted-papers" target="_blank" rel="noopener noreferrer">https://iros2024-abudhabi.org/accepted-papers</a></li>
+  </ul>
+</main>
+
+<footer>
+  <p>© 2025 Ganesh Bhatkar | <a href="mailto:gsbhatkar@gmail.com">gsbhatkar@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
