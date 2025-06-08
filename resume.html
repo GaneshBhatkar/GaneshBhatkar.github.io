@@ -1,169 +1,131 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        .header {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #007BFF;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #007BFF;
-        }
-        .header p {
-            margin: 5px 0;
-        }
-        .header a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        .header a:hover {
-            text-decoration: underline;
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        .section h2 {
-            font-size: 1.5em;
-            color: #007BFF;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            margin-bottom: 10px;
-        }
-        ul li strong {
-            color: #333;
-        }
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .skills span {
-            background-color: #007BFF;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume – Ganesh Bhatkar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f9f9;
+      color: #2f3e46;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #005f73;
+      padding: 20px 0;
+    }
+    .navbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fefae0;
+      text-decoration: none;
+    }
+    .nav-links a {
+      color: #fefae0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #0a9396;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      border-bottom: 3px solid #94d2bd;
+      padding-bottom: 10px;
+    }
+    .pdf-container {
+      margin: 20px 0;
+      border: 2px solid #94d2bd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      display: block;
+    }
+    .download-btn {
+      display: inline-block;
+      background-color: #005f73;
+      color: #fefae0;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .download-btn:hover {
+      background-color: #0a9396;
+    }
+    footer {
+      background-color: #005f73;
+      color: #fefae0;
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Ganesh Bhatkar</h1>
-            <p>Email: <a href="mailto:gsbhatkar@gmail.com">gsbhatkar@gmail.com</a> | Phone: +91 8454928405</p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a> | GitHub: <a href="https://ganeshbhatkar.github.io/" target="_blank">github.com/GaneshBhatkar</a></p>
-        </div>
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <a href="index.html" class="logo">Ganesh Bhatkar</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="resume.html">Resume</a>
+        <a href="blog.html">Blog</a>
+      </div>
+    </nav>
+  </header>
 
-        <div class="section">
-            <h2>Objective</h2>
-            <p>A brief statement about your career goals and what you aim to achieve in your professional life.</p>
-        </div>
+  <main>
+    <h1>Resume</h1>
 
-        <div class="section">
-            <h2>Education</h2>
-            <ul>
-                <li>
-                    <strong>Bachelor of Science in Computer Science</strong> – XYZ University<br>
-                    <em>Graduated: 2020</em><br>
-                    Relevant coursework: Data Structures, Machine Learning, Robotics.
-                </li>
-                <li>
-                    <strong>High School Diploma</strong> – ABC School<br>
-                    <em>Graduated: 2016</em>
-                </li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Experience</h2>
-            <ul>
-                <li>
-                    <strong>Software Engineer</strong> – TechCorp Inc.<br>
-                    <em>2021 – Present</em><br>
-                    Developed automation tools and collaborated with the robotics team to integrate computer vision systems.
-                </li>
-                <li>
-                    <strong>Intern</strong> – Innovate Labs<br>
-                    <em>2020 – 2021</em><br>
-                    Assisted in designing AI models for pathfinding in autonomous robots.
-                </li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Projects</h2>
-            <ul>
-                <li>
-                    <strong>Autonomous Delivery Robot</strong><br>
-                    Designed and implemented a SLAM-based navigation system for a delivery robot using ROS and LiDAR.
-                </li>
-                <li>
-                    <strong>Follow-Me Robot</strong><br>
-                    Built a robot that autonomously follows a person using Python and OpenCV for real-time object tracking.
-                </li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Skills</h2>
-            <div class="skills">
-                <span>Python</span>
-                <span>C</span>
-                <span>Computer Vision</span>
-                <span>SLAM</span>
-                <span>Embedded Systems</span>
-                <span>Robotics</span>
-                <span>Path Planning</span>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Achievements</h2>
-            <ul>
-                <li>Awarded “Best Robotics Project” at XYZ Hackathon 2021.</li>
-                <li>Published research on autonomous navigation in <em>International Robotics Journal</em>.</li>
-            </ul>
-        </div>
+    <!-- Embed the PDF -->
+    <div class="pdf-container">
+      <iframe src="CV_Ganesh_Bhatkar.pdf" title="Ganesh Bhatkar Resume PDF"></iframe>
     </div>
 
-    <footer>
-        &copy; 2024 Your Name | Built with HTML & CSS
-    </footer>
+    <!-- Download Button -->
+    <a href="Ganesh_Bhatkar_Resume.pdf" download class="download-btn" aria-label="Download Resume PDF">
+      Download Resume PDF
+    </a>
+  </main>
+
+  <footer>
+    &copy; 2025 Ganesh Bhatkar | All rights reserved.
+  </footer>
 </body>
 </html>
