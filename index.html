@@ -2,141 +2,145 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ganesh Bhatkar – Robotics Developer Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ganesh Bhatkar – Robotics Portfolio</title>
   <style>
-    /* Reset & Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
       font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      background-color: #f5f7fa;
-      color: #333;
+      margin: 0;
+      background-color: #f0f4f8;
+      color: #2f3e46;
     }
+
     header {
-      background-color: #1e40af;
-      padding: 15px 20px;
+      background-color: #005f73;
+      padding: 20px;
     }
+
     .navbar {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
     }
+
     .logo {
-      color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: bold;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .nav-links a.active,
-    .nav-links a:hover {
-      text-decoration: underline;
+      color: #fefae0;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
+    .nav-links a {
+      color: #fefae0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1rem;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 60px auto;
       padding: 0 20px;
       text-align: center;
     }
 
-    .profile-pic {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #1e40af;
-      margin-bottom: 20px;
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #0a9396;
     }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #1e40af;
-    }
-
-    p {
+    .hero p {
       font-size: 1.1rem;
-      margin-bottom: 14px;
+      margin: 20px 0;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btn {
+      background-color: #0a9396;
+      color: #fefae0;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .section {
+      background-color: #e0e8ec;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      color: #005f73;
+      font-size: 1.8rem;
+    }
+
+    .section p {
+      font-size: 1rem;
+      max-width: 900px;
+      margin: 10px auto;
     }
 
     footer {
-      margin: 40px 0 20px 0;
       text-align: center;
+      padding: 20px;
+      background-color: #005f73;
+      color: #fefae0;
       font-size: 0.9rem;
-      color: #666;
-    }
-    footer a {
-      color: #1e40af;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
     }
 
-    @media (max-width: 600px) {
-      .navbar {
+    @media (max-width: 768px) {
+      .nav-links {
+        display: flex;
         flex-direction: column;
         gap: 10px;
-        text-align: center;
-      }
-      .nav-links {
-        flex-direction: column;
-        gap: 8px;
-      }
-      .profile-pic {
-        width: 120px;
-        height: 120px;
+        margin-top: 10px;
       }
     }
   </style>
 </head>
 <body>
+
   <header>
     <nav class="navbar">
       <div class="logo">Ganesh Bhatkar</div>
-      <ul class="nav-links">
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">Skills</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Research</a></li>
-        <li><a href="#">Resume</a></li>
-        <li><a href="#">Blog</a></li>
-      </ul>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="resume.html">Resume</a>
+        <a href="blog.html">Blog</a>
+      </div>
     </nav>
   </header>
 
-  <main class="container">
-    <img src="https://via.placeholder.com/160" alt="Ganesh Bhatkar" class="profile-pic" />
-    <h1>Hello, I am Ganesh Bhatkar</h1>
+  <section class="hero">
+    <h1>From Embedded Systems to Robotics</h1>
     <p>
-      Embedded Software Developer transitioning into Robotics Engineering.  
-      I focus on Computer Vision, Path Planning, and Mapping to build autonomous systems.
+      I'm an Embedded Systems Engineer with 5+ years of experience building real-time systems for industrial and medical domains. Currently, I'm developing a Modular UGV using ROS 2 and Edge-AI, aiming to solve real-world problems in urban mobility and disaster response.
     </p>
+    <a href="projects.html" class="cta-btn">View My Projects</a>
+  </section>
+
+  <section class="section">
+    <h2>About Me</h2>
     <p>
-      Currently working on a 3-wheeled modular UGV project with ROS 2 and Edge-AI,  
-      and preparing for a Master's degree in Japan with a research focus on Smart City Robotics.
+      I hold a Master's in Embedded Systems from BITS Pilani (WILP), and a Bachelor's in Electronics & Telecommunication. I’m now focusing on AI-enabled robotics for smart cities. My goal is to pursue a Master's in Robotics in Japan and contribute to advanced autonomous systems and real-world robotic deployment.
     </p>
-  </main>
+  </section>
 
   <footer>
-    <p>© 2025 Ganesh Bhatkar | <a href="mailto:gsbhatkar@gmail.com">gsbhatkar@gmail.com</a></p>
+    <p>© 2025 Ganesh Bhatkar | <a style="color: #fefae0;" href="mailto:gsbhatkar@gmail.com">gsbhatkar@gmail.com</a></p>
   </footer>
+
 </body>
 </html>
