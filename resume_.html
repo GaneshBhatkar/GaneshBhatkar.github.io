@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume – Ganesh Bhatkar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f9f9;
+      color: #2f3e46;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #005f73;
+      padding: 20px 0;
+    }
+    .navbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fefae0;
+      text-decoration: none;
+    }
+    .nav-links a {
+      color: #fefae0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #0a9396;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      border-bottom: 3px solid #94d2bd;
+      padding-bottom: 10px;
+    }
+    .pdf-container {
+      margin: 20px 0;
+      border: 2px solid #94d2bd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      display: block;
+    }
+    .download-btn {
+      display: inline-block;
+      background-color: #005f73;
+      color: #fefae0;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .download-btn:hover {
+      background-color: #0a9396;
+    }
+    footer {
+      background-color: #005f73;
+      color: #fefae0;
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <a href="index.html" class="logo">Ganesh Bhatkar</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="resume.html">Resume</a>
+        <a href="blog.html">Blog</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Resume</h1>
+
+    <!-- Embed the PDF -->
+    <div class="pdf-container">
+      <iframe src="Ganesh_Bhatkar_Resume.pdf" title="Ganesh Bhatkar Resume PDF"></iframe>
+    </div>
+
+    <!-- Download Button -->
+    <a href="Ganesh_Bhatkar_Resume.pdf" download class="download-btn" aria-label="Download Resume PDF">
+      Download Resume PDF
+    </a>
+  </main>
+
+  <footer>
+    &copy; 2025 Ganesh Bhatkar | All rights reserved.
+  </footer>
+</body>
+</html>
