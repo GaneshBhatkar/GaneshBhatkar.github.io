@@ -65,30 +65,15 @@
       font-weight: 600;
       margin-top: 1.2em;
     }
-    ul {
+    ul, ol {
       padding-left: 1.3em;
       margin-bottom: 1.2em;
     }
-    ul li {
+    ul li, ol li {
       margin-bottom: 0.4em;
     }
     p {
       margin-bottom: 1em;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1em;
-      margin-bottom: 2em;
-    }
-    th, td {
-      border: 1px solid #94d2bd;
-      padding: 8px 12px;
-      text-align: left;
-    }
-    th {
-      background-color: #e0f1f1;
-      color: #005f73;
     }
     footer {
       background-color: #005f73;
@@ -127,156 +112,126 @@
   <h1>Research Proposal</h1>
 
   <h2>Title</h2>
-  <p><strong>Design and Development of a Modular 3-Wheeled Urban Ground Robot with Swappable Mission Payloads Using ROS 2 and Edge-AI for Smart City Applications</strong></p>
+  <p><strong>Outdoor Autonomous 3-Wheeled Trike UGV: Active SLAM and Robust Safe Motion Control for Smart City Mobility</strong></p>
 
   <h2>Abstract</h2>
   <p>
-    With rapid advancements in smart city infrastructure—especially in Japan—there is an increasing need for adaptable urban robotic systems capable of efficiently performing diverse public service roles. This research proposes the design and development of a compact, modular 3-wheeled Unmanned Ground Vehicle (UGV) tailored for urban environments.
+    Urban environments increasingly require agile, cost-effective autonomous ground vehicles (UGVs) to enable Smart City applications such as last-mile delivery, safety patrols, and real-time environmental monitoring.
+    This research proposes the design and development of a 3-wheeled trike-type outdoor UGV, combining the maneuverability of a motorbike configuration with the passive stability needed for real-world urban deployment.
   </p>
   <p>
-    The UGV will feature swappable mission payloads specialized for tasks such as surveillance, autonomous cleaning, tourism guidance, and security patrol. By leveraging ROS 2 for flexible and robust robotic control alongside Edge-AI platforms like NVIDIA Jetson for real-time perception and decision-making, this project aims to create a scalable and cost-effective robotic platform.
-  </p>
-  <p>
-    The development aligns closely with Japan’s smart city initiatives led by NEDO and MLIT. The outcome will be a functional, field-tested prototype demonstrating modularity, autonomy, and adaptability suitable for dynamic urban settings.
+    The system will integrate ROS 2, Edge AI (Jetson Nano), Active GNSS-Visual SLAM, and robust safe motion control strategies to achieve reliable outdoor navigation in semi-structured environments.
+    Through field validation inspired by real-world urban scenarios, this project will contribute an open-source, reproducible platform for urban mobile robot research, aligning with Japan’s Smart City and urban mobility goals.
   </p>
 
   <h2>Introduction</h2>
   <p>
-    Modern urban environments in Japan face multiple challenges such as an aging population, labor shortages, increased tourism, and growing safety concerns. To address these issues, smart city initiatives are driving the integration of advanced technologies and automation into public services. However, most deployed urban robots are single purpose, requiring different platforms for surveillance, cleaning, or tourism assistance. This leads to higher operational costs and inefficiencies.
+    As cities become smarter and more connected, autonomous mobile robots must navigate complex outdoor environments safely and efficiently.
+    4-wheeled UGVs offer stability but may struggle in tight spaces; 2-wheeled robots require active balancing, increasing control complexity.
   </p>
   <p>
-    This research proposes the design and development of a compact, modular 3-wheeled Unmanned Ground Vehicle (UGV) optimized for urban mobility. The UGV will support swappable mission payloads, allowing it to perform a variety of civic tasks with a single adaptable platform. Its compact size ensures maneuverability in narrow urban spaces, while its modularity enables scalable deployment across different sectors. Leveraging ROS 2 will provide robust, flexible software architecture, and the integration of Edge-AI will enable real-time perception and decision-making without relying on cloud connectivity. This project aligns closely with Japan’s smart city goals and aims to contribute practical, cost-effective robotic solutions for future urban societies.
+    A 3-wheeled trike-type configuration, inspired by motorbike designs, provides a balance of maneuverability, passive stability, and mechanical simplicity — well suited for urban sidewalks, campus paths, and service lanes.
+  </p>
+  <p>
+    Key challenges remain in:
+  </p>
+  <ul>
+    <li>Reliable outdoor localization in GNSS-limited “urban canyon” areas,</li>
+    <li>Active exploration and mapping with minimal drift,</li>
+    <li>Robust obstacle detection and real-time avoidance,</li>
+    <li>Safe trajectory tracking under uncertain outdoor conditions.</li>
+  </ul>
+  <p>
+    This project directly addresses these challenges by combining Active SLAM, robust safe motion control, and practical field testing for safe autonomous exploration.
   </p>
 
   <h2>Literature Review</h2>
-  <p>
-    Recent studies have highlighted both the challenges and the potential of modular Unmanned Ground Vehicles (UGVs) in urban environments. Aravantinos et al. (2023) emphasize the need for unified control systems and hot-swappable payload capabilities in modular UGVs to enable flexible mission adaptation. ROS 2, with its distributed and lifecycle-managed nodes, offers a promising middleware framework to support dynamic payload integration and modularity.
-  </p>
-  <p>
-    Edge-AI technologies, as discussed by Alzubaidi et al. (2020), are crucial for enabling robots to operate with minimal latency and bandwidth constraints, which is especially important in densely populated urban areas. While Japan’s NEDO and MLIT projects have driven significant advancements in smart city robotics, their focus has largely been on task-specific robots, which limits scalability and flexibility.
-  </p>
-  <p>
-    Studies by Yamato et al. (2022) and Kanda et al. (2019) underline the importance of socially aware robots that can adapt to multiple roles within urban spaces. However, there remains a significant gap in the deployment of multi-role modular UGVs capable of switching seamlessly between various urban tasks. This research aims to address that gap by integrating modular hardware design with AI-driven autonomy to create a versatile urban robotic platform.
-  </p>
+  <ul>
+    <li>Hayashibara et al. (2018) demonstrated GNSS-aided Lidar localization for outdoor mobile robots, providing practical methods for reliable field robot navigation under variable signal conditions.</li>
+    <li>The Tsukuba Challenge has established a public benchmark for real-world autonomous navigation, encouraging teams to develop robust UGVs that navigate urban-like public routes with dynamic obstacles.</li>
+    <li>Yamaha and Piaggio have developed 3-wheeled leaning trikes for urban maneuverability; however, these commercial vehicles are designed for human riders and lack autonomous capabilities.</li>
+    <li>Many ROS-based UGV research projects focus on differential-drive or skid-steer designs, with few open-source examples that combine a compact trike layout with Edge AI and robust outdoor localization for Smart City deployment.</li>
+  </ul>
 
   <h2>Research Objectives</h2>
-  <ul>
-    <li>Design and fabricate a compact, 3-wheeled UGV optimized for urban mobility.</li>
-    <li>Develop four swappable payload modules for:
-      <ul>
-        <li>Urban surveillance and safety monitoring</li>
-        <li>Autonomous cleaning and sanitation</li>
-        <li>Navigation and tourism guidance</li>
-        <li>Security patrol with public assistance</li>
-      </ul>
-    </li>
-    <li>Implement a ROS 2-based modular software stack for dynamic payload recognition and integration.</li>
-    <li>Integrate Edge-AI models for real-time object detection, path planning, and multilingual voice interaction.</li>
-    <li>Simulate and test the system in realistic urban smart city scenarios.</li>
-  </ul>
+  <ol>
+    <li>Design and fabricate a 3-wheeled trike-type outdoor chassis with reliable steering and drive systems.</li>
+    <li>Develop low-level real-time control with an STM32 MCU and micro-ROS, enabling safe actuator operation.</li>
+    <li>Implement Active SLAM combining GNSS, visual SLAM, and Lidar for robust localization and information-gain exploration.</li>
+    <li>Apply robust safe motion control strategies to maintain stable, accurate trajectory tracking in dynamic outdoor settings.</li>
+    <li>Use Edge AI (Jetson Nano) for real-time perception tasks like object detection, SLAM, and path planning.</li>
+    <li>Conduct outdoor field trials in urban-like test routes to validate performance under Smart City conditions.</li>
+    <li>Release hardware design files, ROS 2 packages, and collected field data as open-source resources, supporting reproducible research in urban outdoor autonomy.</li>
+  </ol>
 
   <h2>Methodology</h2>
   <ol>
-    <li><strong>Mechanical Design & Payload Engineering:</strong>
+    <li><strong>Hardware:</strong>
       <ul>
-        <li>CAD design and 3D prototyping of the UGV chassis with standardized docking for quick payload swaps.</li>
-        <li>Payload modules include:
-          <ul>
-            <li>Surveillance: 360° cameras, infrared sensors</li>
-            <li>Cleaning: Suction motor, waste bin, sweeper mechanism</li>
-            <li>Tour Guide: Touchscreen display, multilingual voice output, QR code scanner</li>
-            <li>Security: Siren, alarm lights, emergency panic button</li>
-          </ul>
-        </li>
+        <li>3-wheeled chassis: front steering wheel, two rear drive wheels.</li>
+        <li>Motorized steering fork, BLDC hub motors, and swing-arm suspension for rough terrain.</li>
+        <li>Air-filled scooter wheels for outdoor durability.</li>
       </ul>
     </li>
-    <li><strong>ROS 2-Based Software Architecture:</strong>
+    <li><strong>Embedded Control:</strong>
       <ul>
-        <li>Develop lifecycle-managed ROS 2 nodes and plugins for payload hot swap.</li>
-        <li>Integrate Visual SLAM combining LIDAR and camera data.</li>
-        <li>Implement path planning and real-time obstacle avoidance using the Nav2 stack.</li>
+        <li>STM32 microcontroller with micro-ROS bridge for tight integration.</li>
+        <li>Safe motion control loops for reliable and stable operation.</li>
       </ul>
     </li>
-    <li><strong>Edge-AI Integration:</strong>
+    <li><strong>Perception & Computation:</strong>
       <ul>
-        <li>Deploy onboard AI models on NVIDIA Jetson Xavier or Nano.</li>
-        <li>Use object/person detection models such as YOLOv8 or MobileNet-SSD.</li>
-        <li>Implement multilingual voice interaction via Vosk or Whisper engines.</li>
+        <li>Jetson Nano Edge AI.</li>
+        <li>GNSS module fused with visual SLAM.</li>
+        <li>Stereo camera and 2D/3D Lidar.</li>
+        <li>IMU and encoders for robust sensor fusion.</li>
       </ul>
     </li>
-    <li><strong>Simulation & Field Trials:</strong>
+    <li><strong>Software Stack:</strong>
       <ul>
-        <li>Use Gazebo simulator to validate mission modes.</li>
-        <li>Conduct real-world testing in controlled urban environments such as university campuses.</li>
+        <li>ROS 2, Navigation 2 stack.</li>
+        <li>RTAB-Map or ORB-SLAM2 for Active SLAM.</li>
+        <li>Information-gain exploration strategies for efficient coverage.</li>
       </ul>
     </li>
-    <li><strong>Evaluate key performance indicators:</strong> mission success rate, response time, and payload swap efficiency.</li>
+    <li><strong>Validation:</strong>
+      <ul>
+        <li>Simulations in Gazebo.</li>
+        <li>Indoor and outdoor field trials inspired by Tsukuba Challenge.</li>
+        <li>Urban mobility metrics: drift, trajectory accuracy, real-time obstacle avoidance.</li>
+      </ul>
+    </li>
   </ol>
-
-  <h2>Timeline: Total Duration 24 months</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Phase</th>
-        <th>Duration</th>
-        <th>Activities</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Research Planning & Setup</td>
-        <td>3 months</td>
-        <td>Literature review, component sourcing, initial design</td>
-      </tr>
-      <tr>
-        <td>Mechanical & Module Prototyping</td>
-        <td>5 months</td>
-        <td>Chassis and module fabrication, integration</td>
-      </tr>
-      <tr>
-        <td>Software Development (ROS 2)</td>
-        <td>5 months</td>
-        <td>Navigation, SLAM, control stack development</td>
-      </tr>
-      <tr>
-        <td>AI Model Integration & Testing</td>
-        <td>3 months</td>
-        <td>AI training, voice recognition setup</td>
-      </tr>
-      <tr>
-        <td>Simulation & Field Trials</td>
-        <td>5 months</td>
-        <td>Real-world deployment, performance evaluation</td>
-      </tr>
-      <tr>
-        <td>Final Evaluation & Documentation</td>
-        <td>3 months</td>
-        <td>Report writing, thesis, publication preparation</td>
-      </tr>
-    </tbody>
-  </table>
 
   <h2>Expected Outcomes</h2>
   <ul>
-    <li>A fully functional modular 3-wheeled UGV prototype.</li>
-    <li>Demonstrated real-world use cases in tourism, safety, cleaning, and security.</li>
-    <li>A ROS 2 modular software framework enabling rapid mission reconfiguration.</li>
-    <li>Onboard Edge-AI integration for autonomous urban deployment.</li>
-    <li>Publications in international robotics conferences and journals.</li>
-    <li>Potential collaborations with Japanese smart city projects and industry partners.</li>
+    <li>Fully functional outdoor trike UGV for Smart City testbeds.</li>
+    <li>Reproducible open-source hardware and software.</li>
+    <li>Datasets for benchmarking Active SLAM and safe motion control in outdoor urban conditions.</li>
+    <li>Strong contribution to future Smart City mobile robot development.</li>
   </ul>
+
+  <h2>Future Scope</h2>
+  <p>The modular platform can expand to support:</p>
+  <ul>
+    <li>Parcel delivery</li>
+    <li>Safety and security patrol</li>
+    <li>Environmental monitoring</li>
+    <li>Tourist information services</li>
+  </ul>
+  <p>
+    This modular approach will enable deployment in multiple Smart City scenarios, supporting local governments and academic testbeds.
+  </p>
 
   <h2>References</h2>
   <ul>
-    <li>Aravantinos, T., et al. (2023). Recent developments in modular unmanned ground vehicles: A review. Robotics and Autonomous Systems, Elsevier.</li>
-    <li>ROS 2 Documentation. Open Robotics. <a href="https://docs.ros.org" target="_blank" rel="noopener noreferrer">https://docs.ros.org</a></li>
-    <li>Alzubaidi, A., et al. (2020). Edge Computing for Robotics: Applications, Technologies, and Challenges. arXiv:1909.08747</li>
-    <li>NVIDIA Developer Blog. Implementing Robotics Applications with ROS 2 and AI on Jetson. <a href="https://developer.nvidia.com/blog" target="_blank" rel="noopener noreferrer">https://developer.nvidia.com/blog</a></li>
-    <li>Yamato, Y., et al. (2022). Smart City Robotics in Japan. IEEE Access.</li>
-    <li>Kanda, T., et al. (2019). Understanding people’s responses to autonomous service robots in public spaces. International Journal of Social Robotics, Springer.</li>
-    <li>NEDO Smart City Reports. <a href="https://www.nedo.go.jp/english" target="_blank" rel="noopener noreferrer">https://www.nedo.go.jp/english</a></li>
-    <li>IROS 2024 Accepted Papers. <a href="https://iros2024-abudhabi.org/accepted-papers" target="_blank" rel="noopener noreferrer">https://iros2024-abudhabi.org/accepted-papers</a></li>
+    <li><a href="https://tsukubachallenge.jp/en/" target="_blank" rel="noopener noreferrer">Tsukuba Challenge Official Site</a></li>
+    <li>Hayashibara et al., GNSS-Aided Lidar Localization, ROBIO 2018</li>
+    <li>Shumon Koga et al., Active SLAM and Safe Motion Control for Mobile Robots</li>
+    <li>Koubaa et al., Robot Operating System (ROS): The Complete Reference, Springer</li>
+    <li><a href="https://introlab.github.io/rtabmap/" target="_blank" rel="noopener noreferrer">RTAB-Map Official Website</a></li>
   </ul>
+
 </main>
 
 <footer>
