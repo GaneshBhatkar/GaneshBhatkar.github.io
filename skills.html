@@ -2,99 +2,489 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Skills – Ganesh Bhatkar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Technical skills of Ganesh Bhatkar in embedded systems, robotics, ROS 2, programming, electronics, and industrial automation."
+  />
+
+  <title>Skills | Ganesh Bhatkar</title>
+
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background-color: #f0f4f8;
-      color: #2f3e46;
+    :root {
+      --bg: #0b1220;
+      --panel: #111c2e;
+      --panel-light: #17263b;
+      --text: #e7edf5;
+      --muted: #aab8ca;
+      --accent: #58d5c9;
+      --border: rgba(255, 255, 255, 0.12);
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* Navigation */
+
     header {
-      background-color: #005f73;
-      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 18, 32, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
     }
 
     .navbar {
-      max-width: 1100px;
-      margin: 0 auto;
+      min-height: 76px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
     .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #fefae0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 20px;
     }
 
     .nav-links a {
-      color: #fefae0;
+      color: var(--muted);
       text-decoration: none;
-      margin-left: 20px;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
-    .content {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .nav-links a:hover {
+      color: var(--accent);
     }
 
-    .content h1 {
-      color: #0a9396;
-      font-size: 2rem;
-      margin-bottom: 20px;
+    /* Page Header */
+
+    .page-header {
+      padding: 85px 0 55px;
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(88, 213, 201, 0.12),
+          transparent 28%
+        );
     }
 
-    ul {
-      list-style: square;
-      padding-left: 20px;
-      font-size: 1rem;
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 15px;
     }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin: 0 0 18px;
+    }
+
+    .page-header p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    /* Skills Section */
+
+    section {
+      padding: 45px 0 80px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .skill-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .skill-card h2 {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin: 0 0 18px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .skill-list li {
+      background: var(--panel-light);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 8px 12px;
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    /* Experience Summary */
+
+    .summary-box {
+      margin-top: 28px;
+      padding: 28px;
+      background: var(--panel-light);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+    }
+
+    .summary-box h2 {
+      margin-top: 0;
+    }
+
+    .summary-box p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    /* Footer */
 
     footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #005f73;
-      color: #fefae0;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
       font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive Design */
+
+    @media (max-width: 800px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        gap: 12px 18px;
+      }
     }
   </style>
 </head>
+
 <body>
 
+  <!-- Navigation -->
+
   <header>
-    <nav class="navbar">
-      <div class="logo">Ganesh Bhatkar</div>
+    <nav class="navbar container" aria-label="Main navigation">
+
+      <div class="logo">
+        Ganesh <span>Bhatkar</span>
+      </div>
+
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="skills.html">Skills</a>
         <a href="projects.html">Projects</a>
         <a href="research.html">Research</a>
-        <a href="resume_.html">Resume</a>
-        <a href="blog.html">Blog</a>
+        <a href="ros-journey.html">ROS 2 Journey</a>
+        <a href="resume.html">Resume</a>
       </div>
+
     </nav>
   </header>
 
-  <div class="content">
-    <h1>Technical Skills</h1>
-    <ul>
-      <li><strong>Languages & Frameworks:</strong> Embedded C, Python, Arduino, ROS 2, FreeRTOS</li>
-      <li><strong>Microcontrollers:</strong> STM32, PIC16F, AVR, ESP8266, STM8S, Arduino, Raspberry Pi</li>
-      <li><strong>Protocols:</strong> UART, SPI, I2C, RS232, RS485, Modbus</li>
-      <li><strong>Tools:</strong> STM32CubeIDE, Microchip Studio, MPLAB X, Keil uVision, Kicad, DWIN GUI</li>
-      <li><strong>Electronics:</strong> PCB Design, Capacitive Sensors, Stepper Motors, Signal Debugging</li>
-      <li><strong>Software:</strong> Visual Studio Code, Windows GUI Development, GitHub Pages</li>
-    </ul>
-  </div>
+  <main>
+
+    <!-- Page Header -->
+
+    <section class="page-header">
+
+      <div class="container">
+
+        <div class="eyebrow">
+          Technical Profile
+        </div>
+
+        <h1>
+          Skills & Technologies
+        </h1>
+
+        <p>
+          My technical background combines embedded firmware development,
+          industrial automation, electronics, hardware integration, and
+          robotics software development.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- Skills -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="skills-grid">
+
+          <!-- Robotics -->
+
+          <article class="skill-card">
+
+            <h2>Robotics & Simulation</h2>
+
+            <ul class="skill-list">
+              <li>ROS 2</li>
+              <li>Gazebo</li>
+              <li>The Construct</li>
+              <li>RViz2</li>
+              <li>TF2</li>
+              <li>LiDAR</li>
+              <li>IMU</li>
+              <li>Robot State Estimation</li>
+              <li>EKF</li>
+              <li>SLAM Toolbox</li>
+              <li>AMCL</li>
+              <li>Nav2</li>
+            </ul>
+
+          </article>
+
+          <!-- Programming -->
+
+          <article class="skill-card">
+
+            <h2>Programming</h2>
+
+            <ul class="skill-list">
+              <li>Embedded C</li>
+              <li>Python</li>
+              <li>Arduino</li>
+            </ul>
+
+          </article>
+
+          <!-- Microcontrollers -->
+
+          <article class="skill-card">
+
+            <h2>Embedded Systems</h2>
+
+            <ul class="skill-list">
+              <li>STM32</li>
+              <li>PIC32</li>
+              <li>PIC16</li>
+              <li>AVR</li>
+              <li>STM8</li>
+              <li>ESP8266</li>
+              <li>Microcontroller Firmware</li>
+              <li>Industrial Machine Control</li>
+            </ul>
+
+          </article>
+
+          <!-- Communication -->
+
+          <article class="skill-card">
+
+            <h2>Communication & Interfaces</h2>
+
+            <ul class="skill-list">
+              <li>UART</li>
+              <li>SPI</li>
+              <li>I²C</li>
+              <li>RS232</li>
+              <li>RS485</li>
+              <li>Modbus</li>
+              <li>HMI Communication</li>
+              <li>Nextion HMI</li>
+            </ul>
+
+          </article>
+
+          <!-- Hardware -->
+
+          <article class="skill-card">
+
+            <h2>Hardware & Electronics</h2>
+
+            <ul class="skill-list">
+              <li>Electrical Schematics</li>
+              <li>PCB Design</li>
+              <li>PCB Routing</li>
+              <li>Eagle CAD</li>
+              <li>KiCad</li>
+              <li>EasyEDA</li>
+              <li>Hardware Testing</li>
+              <li>Signal Integrity</li>
+              <li>Hardware Debugging</li>
+              <li>Sensor Integration</li>
+              <li>Motor Interfacing</li>
+            </ul>
+
+          </article>
+
+          <!-- Sensors and Actuators -->
+
+          <article class="skill-card">
+
+            <h2>Sensors & Actuators</h2>
+
+            <ul class="skill-list">
+              <li>IR Sensors</li>
+              <li>Laser Sensors</li>
+              <li>Inductive Sensors</li>
+              <li>Temperature Sensors</li>
+              <li>Relays</li>
+              <li>Pneumatic Valves</li>
+              <li>Motors</li>
+              <li>Heaters</li>
+              <li>VFD Control</li>
+              <li>0–10 V Analog Control</li>
+            </ul>
+
+          </article>
+
+          <!-- Development Tools -->
+
+          <article class="skill-card">
+
+            <h2>Development Tools</h2>
+
+            <ul class="skill-list">
+              <li>MPLAB X IDE</li>
+              <li>MPLAB Harmony</li>
+              <li>XC32</li>
+              <li>STM32CubeIDE</li>
+              <li>Microchip Studio</li>
+              <li>Keil uVision</li>
+              <li>Visual Studio Code</li>
+              <li>GitHub</li>
+              <li>Linux</li>
+            </ul>
+
+          </article>
+
+          <!-- Testing and Debugging -->
+
+          <article class="skill-card">
+
+            <h2>Testing & Debugging</h2>
+
+            <ul class="skill-list">
+              <li>Individual I/O Testing</li>
+              <li>Function Testing</li>
+              <li>Sequence Testing</li>
+              <li>Fault-Condition Testing</li>
+              <li>Firmware Debugging</li>
+              <li>Hardware Troubleshooting</li>
+              <li>Sensor Validation</li>
+              <li>Actuator Validation</li>
+              <li>Machine Commissioning</li>
+            </ul>
+
+          </article>
+
+        </div>
+
+        <!-- Professional Summary -->
+
+        <div class="summary-box">
+
+          <h2>Professional Strength</h2>
+
+          <p>
+            I specialize in connecting firmware, electronics, sensors,
+            actuators, and machine-level control logic. My current work
+            focuses on PIC32-based industrial automation systems, while
+            my robotics development focuses on ROS 2 simulation,
+            localization, mapping, state estimation, and autonomous
+            navigation.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
 
   <footer>
-    <p>© 2025 Ganesh Bhatkar | <a style="color: #fefae0;" href="mailto:gsbhatkar@gmail.com">gsbhatkar@gmail.com</a></p>
+
+    <div class="container">
+
+      © 2026 Ganesh Bhatkar ·
+      <a href="mailto:gsbhatkar@gmail.com">
+        gsbhatkar@gmail.com
+      </a>
+
+    </div>
+
   </footer>
 
 </body>
