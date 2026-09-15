@@ -1,241 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Research Proposal – Ganesh Bhatkar</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f3f9f9;
-      color: #2f3e46;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #005f73;
-      padding: 20px 0;
-    }
-    .navbar {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #fefae0;
-      text-decoration: none;
-    }
-    .nav-links a {
-      color: #fefae0;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    .content {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px 60px;
-      line-height: 1.6;
-    }
-    h1, h2, h3 {
-      color: #0a9396;
-      margin-top: 1.5em;
-      margin-bottom: 0.5em;
-    }
-    h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      border-bottom: 3px solid #94d2bd;
-      padding-bottom: 10px;
-    }
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      border-bottom: 2px solid #94d2bd;
-      padding-bottom: 8px;
-    }
-    h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-top: 1.2em;
-    }
-    ul, ol {
-      padding-left: 1.3em;
-      margin-bottom: 1.2em;
-    }
-    ul li, ol li {
-      margin-bottom: 0.4em;
-    }
-    p {
-      margin-bottom: 1em;
-    }
-    footer {
-      background-color: #005f73;
-      color: #fefae0;
-      text-align: center;
-      padding: 15px 20px;
-      font-size: 0.9rem;
-      margin-top: 40px;
-    }
-    a {
-      color: #0a9396;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Interests | Ganesh Bhatkar</title>
+<meta name="description" content="Research interests and proposed direction of Ganesh Bhatkar in autonomous mobile robots, UGVs, vehicle stability, sensor fusion, and Visual-SLAM.">
+<style>
+:root{
+  --bg:#0b1120;
+  --panel:#111827;
+  --panel2:#172033;
+  --text:#e5e7eb;
+  --muted:#aab4c5;
+  --accent:#38bdf8;
+  --accent2:#22d3ee;
+  --border:#263449;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#08101d,#0f172a 55%,#111827);
+  color:var(--text);
+  line-height:1.7;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent2)}
+nav{
+  position:sticky;top:0;z-index:10;
+  background:rgba(8,16,29,.94);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(10px);
+}
+.nav-container{
+  max-width:1150px;margin:auto;padding:18px 24px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+}
+.logo{font-size:1.2rem;font-weight:700;letter-spacing:.5px}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;flex-wrap:wrap;gap:18px}
+.nav-links a{color:var(--muted);font-size:.95rem}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.container{max-width:1100px;margin:auto;padding:70px 24px}
+.hero{
+  padding:70px 35px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:radial-gradient(circle at top right,rgba(56,189,248,.14),transparent 42%),var(--panel);
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+.eyebrow{
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.8rem;
+  font-weight:700;
+}
+h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.15;margin:14px 0 20px}
+h2{font-size:1.8rem;margin-bottom:18px}
+h3{font-size:1.15rem;margin-bottom:10px;color:#f8fafc}
+p{color:var(--muted);margin-bottom:15px}
+.hero p{max-width:800px;font-size:1.08rem}
+.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}
+.btn{
+  display:inline-block;padding:11px 17px;border-radius:9px;
+  border:1px solid var(--accent);color:var(--accent);
+  font-weight:700;font-size:.9rem;
+}
+.btn.primary{background:var(--accent);color:#06111c}
+.btn:hover{transform:translateY(-2px)}
+section{margin-top:55px}
+.section-intro{max-width:800px}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;margin-top:22px;
+}
+.card{
+  background:rgba(17,24,39,.9);
+  border:1px solid var(--border);
+  border-radius:15px;padding:25px;
+}
+.card ul{padding-left:20px;color:var(--muted)}
+.card li{margin:7px 0}
+.badge{
+  display:inline-block;font-size:.75rem;font-weight:700;
+  padding:4px 9px;border-radius:20px;
+  color:var(--accent);border:1px solid rgba(56,189,248,.45);
+  margin-bottom:13px;
+}
+.timeline{border-left:2px solid var(--border);margin:25px 0 0 10px;padding-left:28px}
+.timeline-item{position:relative;margin-bottom:30px}
+.timeline-item:before{
+  content:"";position:absolute;left:-38px;top:8px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 0 5px var(--bg);
+}
+.note{
+  border-left:4px solid var(--accent);
+  background:rgba(56,189,248,.08);
+  padding:20px 22px;border-radius:8px;margin-top:22px;
+}
+footer{
+  text-align:center;padding:35px 20px;
+  color:var(--muted);border-top:1px solid var(--border);
+  margin-top:70px;
+}
+@media(max-width:700px){
+  .nav-container{align-items:flex-start;flex-direction:column}
+  .hero{padding:40px 24px}
+  .container{padding:45px 18px}
+}
+</style>
 </head>
 <body>
 
-<header>
-  <nav class="navbar" role="navigation" aria-label="Main Navigation">
-    <a href="index.html" class="logo">Ganesh Bhatkar</a>
+<nav>
+  <div class="nav-container">
+    <div class="logo">GANESH <span>BHATKAR</span></div>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="skills.html">Skills</a>
       <a href="projects.html">Projects</a>
-      <a href="research.html">Research</a>
-      <a href="resume_.html">Resume</a>
-      <a href="blog.html">Blog</a>
+      <a href="research.html" class="active">Research</a>
+      <a href="ros-journey.html">ROS 2 Journey</a>
+      <a href="resume.html">Resume</a>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
 
-<main class="content">
-<!--  <h1>Research Proposal</h1>
+<main class="container">
+  <header class="hero">
+    <div class="eyebrow">Research Interests & Proposed Direction</div>
+    <h1>Autonomous Mobile Robots and Unmanned Ground Vehicles</h1>
+    <p>
+      My research interests focus on developing reliable autonomous mobile robots
+      by combining embedded systems, robot perception, state estimation,
+      localization, mapping, navigation, and vehicle dynamics.
+    </p>
+    <p>
+      The topic presented on this page is a proposed research direction and
+      should not be interpreted as completed academic research.
+    </p>
+    <div class="buttons">
+      <a class="btn primary" href="ros-journey.html">View ROS 2 Work</a>
+      <a class="btn" href="projects.html">View Projects</a>
+    </div>
+  </header>
 
-  <h2>Title</h2>
-  <p><strong>Outdoor Autonomous 3-Wheeled Trike UGV: Active SLAM and Robust Safe Motion Control for Smart City Mobility</strong></p>
+  <section>
+    <h2>Primary Research Interest</h2>
+    <p class="section-intro">
+      I am interested in how the mechanical behavior of a mobile robot affects
+      the reliability of its perception and localization systems, particularly
+      when the robot operates on uneven terrain or in constrained environments.
+    </p>
 
-  <h2>Abstract</h2>
-  <p>
-    Urban environments increasingly require agile, cost-effective autonomous ground vehicles (UGVs) to enable Smart City applications such as last-mile delivery, safety patrols, and real-time environmental monitoring.
-    This research proposes the design and development of a 3-wheeled trike-type outdoor UGV, combining the maneuverability of a motorbike configuration with the passive stability needed for real-world urban deployment.
-  </p>
-  <p>
-    The system will integrate ROS 2, Edge AI (Jetson Nano), Active GNSS-Visual SLAM, and robust safe motion control strategies to achieve reliable outdoor navigation in semi-structured environments.
-    Through field validation inspired by real-world urban scenarios, this project will contribute an open-source, reproducible platform for urban mobile robot research, aligning with Japan’s Smart City and urban mobility goals.
-  </p>
+    <div class="card">
+      <span class="badge">Proposed Research Topic</span>
+      <h3>Effect of Vehicle Tilting and Rear Suspension Dynamics on Visual-SLAM Accuracy in a Three-Wheeled Autonomous Ground Vehicle</h3>
+      <p>
+        The proposed direction is to study the relationship between vehicle
+        motion, chassis tilting, suspension behavior, and SLAM performance in a
+        three-wheeled autonomous ground vehicle.
+      </p>
+      <p>
+        The central motivation is that changes in vehicle attitude and vibration
+        may influence sensor measurements, camera motion, feature tracking, and
+        the quality of the estimated robot trajectory and map.
+      </p>
+    </div>
+  </section>
 
-  <h2>Introduction</h2>
-  <p>
-    As cities become smarter and more connected, autonomous mobile robots must navigate complex outdoor environments safely and efficiently.
-    4-wheeled UGVs offer stability but may struggle in tight spaces; 2-wheeled robots require active balancing, increasing control complexity.
-  </p>
-  <p>
-    A 3-wheeled trike-type configuration, inspired by motorbike designs, provides a balance of maneuverability, passive stability, and mechanical simplicity — well suited for urban sidewalks, campus paths, and service lanes.
-  </p>
-  <p>
-    Key challenges remain in:
-  </p>
-  <ul>
-    <li>Reliable outdoor localization in GNSS-limited “urban canyon” areas,</li>
-    <li>Active exploration and mapping with minimal drift,</li>
-    <li>Robust obstacle detection and real-time avoidance,</li>
-    <li>Safe trajectory tracking under uncertain outdoor conditions.</li>
-  </ul>
-  <p>
-    This project directly addresses these challenges by combining Active SLAM, robust safe motion control, and practical field testing for safe autonomous exploration.
-  </p>
+  <section>
+    <h2>Potential Research Questions</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Vehicle Dynamics</h3>
+        <ul>
+          <li>How does chassis tilting influence the robot's motion and sensor orientation?</li>
+          <li>How do rear suspension characteristics affect body vibration?</li>
+          <li>Which operating conditions produce the greatest attitude variation?</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Perception and SLAM</h3>
+        <ul>
+          <li>How does vehicle motion affect visual feature tracking?</li>
+          <li>Does increased vibration reduce Visual-SLAM trajectory consistency?</li>
+          <li>How can SLAM accuracy be evaluated under different motion conditions?</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Autonomous Navigation</h3>
+        <ul>
+          <li>How can localization reliability be improved on uneven terrain?</li>
+          <li>Can vehicle attitude information support more robust estimation?</li>
+          <li>What trade-offs exist between stability, mobility, and perception?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-  <h2>Literature Review</h2>
-  <ul>
-    <li>Hayashibara et al. (2018) demonstrated GNSS-aided Lidar localization for outdoor mobile robots, providing practical methods for reliable field robot navigation under variable signal conditions.</li>
-    <li>The Tsukuba Challenge has established a public benchmark for real-world autonomous navigation, encouraging teams to develop robust UGVs that navigate urban-like public routes with dynamic obstacles.</li>
-    <li>Yamaha and Piaggio have developed 3-wheeled leaning trikes for urban maneuverability; however, these commercial vehicles are designed for human riders and lack autonomous capabilities.</li>
-    <li>Many ROS-based UGV research projects focus on differential-drive or skid-steer designs, with few open-source examples that combine a compact trike layout with Edge AI and robust outdoor localization for Smart City deployment.</li>
-  </ul>
+  <section>
+    <h2>Possible Methodology</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>1. Vehicle and Environment Modeling</h3>
+        <p>
+          Develop a simulation model of a three-wheeled ground vehicle with
+          configurable geometry, wheel arrangement, suspension behavior, and
+          terrain conditions.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h3>2. Motion and Sensor Simulation</h3>
+        <p>
+          Simulate vehicle tilting, body vibration, camera motion, IMU
+          measurements, and other relevant sensor effects.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h3>3. SLAM Evaluation</h3>
+        <p>
+          Compare trajectory error, map consistency, tracking quality, and
+          localization stability under different vehicle-dynamics conditions.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <h3>4. Analysis and Improvement</h3>
+        <p>
+          Identify the conditions that degrade SLAM performance and investigate
+          possible improvements through sensor placement, filtering, estimation,
+          or vehicle-design changes.
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <h2>Research Objectives</h2>
-  <ol>
-    <li>Design and fabricate a 3-wheeled trike-type outdoor chassis with reliable steering and drive systems.</li>
-    <li>Develop low-level real-time control with an STM32 MCU and micro-ROS, enabling safe actuator operation.</li>
-    <li>Implement Active SLAM combining GNSS, visual SLAM, and Lidar for robust localization and information-gain exploration.</li>
-    <li>Apply robust safe motion control strategies to maintain stable, accurate trajectory tracking in dynamic outdoor settings.</li>
-    <li>Use Edge AI (Jetson Nano) for real-time perception tasks like object detection, SLAM, and path planning.</li>
-    <li>Conduct outdoor field trials in urban-like test routes to validate performance under Smart City conditions.</li>
-    <li>Release hardware design files, ROS 2 packages, and collected field data as open-source resources, supporting reproducible research in urban outdoor autonomy.</li>
-  </ol>
+  <section>
+    <h2>Relevant Technical Interests</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Robot Perception</h3>
+        <p>LiDAR, cameras, IMU sensors, visual perception, and sensor modeling.</p>
+      </div>
+      <div class="card">
+        <h3>State Estimation</h3>
+        <p>Wheel odometry, IMU integration, EKF-based estimation, and TF2.</p>
+      </div>
+      <div class="card">
+        <h3>Localization and Mapping</h3>
+        <p>2D SLAM, occupancy-grid maps, AMCL, and localization reliability.</p>
+      </div>
+      <div class="card">
+        <h3>Autonomous Navigation</h3>
+        <p>Path planning, obstacle avoidance, navigation systems, and mobile-robot control.</p>
+      </div>
+      <div class="card">
+        <h3>Embedded-Robotics Integration</h3>
+        <p>Microcontrollers, actuator interfaces, sensor integration, and real-time machine control.</p>
+      </div>
+      <div class="card">
+        <h3>UGV Stability</h3>
+        <p>Vehicle geometry, suspension behavior, chassis motion, and terrain interaction.</p>
+      </div>
+    </div>
+  </section>
 
-  <h2>Methodology</h2>
-  <ol>
-    <li><strong>Hardware:</strong>
-      <ul>
-        <li>3-wheeled chassis: front steering wheel, two rear drive wheels.</li>
-        <li>Motorized steering fork, BLDC hub motors, and swing-arm suspension for rough terrain.</li>
-        <li>Air-filled scooter wheels for outdoor durability.</li>
-      </ul>
-    </li>
-    <li><strong>Embedded Control:</strong>
-      <ul>
-        <li>STM32 microcontroller with micro-ROS bridge for tight integration.</li>
-        <li>Safe motion control loops for reliable and stable operation.</li>
-      </ul>
-    </li>
-    <li><strong>Perception & Computation:</strong>
-      <ul>
-        <li>Jetson Nano Edge AI.</li>
-        <li>GNSS module fused with visual SLAM.</li>
-        <li>Stereo camera and 2D/3D Lidar.</li>
-        <li>IMU and encoders for robust sensor fusion.</li>
-      </ul>
-    </li>
-    <li><strong>Software Stack:</strong>
-      <ul>
-        <li>ROS 2, Navigation 2 stack.</li>
-        <li>RTAB-Map or ORB-SLAM2 for Active SLAM.</li>
-        <li>Information-gain exploration strategies for efficient coverage.</li>
-      </ul>
-    </li>
-    <li><strong>Validation:</strong>
-      <ul>
-        <li>Simulations in Gazebo.</li>
-        <li>Indoor and outdoor field trials inspired by Tsukuba Challenge.</li>
-        <li>Urban mobility metrics: drift, trajectory accuracy, real-time obstacle avoidance.</li>
-      </ul>
-    </li>
-  </ol>
-
-  <h2>Expected Outcomes</h2>
-  <ul>
-    <li>Fully functional outdoor trike UGV for Smart City testbeds.</li>
-    <li>Reproducible open-source hardware and software.</li>
-    <li>Datasets for benchmarking Active SLAM and safe motion control in outdoor urban conditions.</li>
-    <li>Strong contribution to future Smart City mobile robot development.</li>
-  </ul>
-
-  <h2>Future Scope</h2>
-  <p>The modular platform can expand to support:</p>
-  <ul>
-    <li>Parcel delivery</li>
-    <li>Safety and security patrol</li>
-    <li>Environmental monitoring</li>
-    <li>Tourist information services</li>
-  </ul>
-  <p>
-    This modular approach will enable deployment in multiple Smart City scenarios, supporting local governments and academic testbeds.
-  </p>
-
-  <h2>References</h2>
-  <ul>
-    <li><a href="https://tsukubachallenge.jp/en/" target="_blank" rel="noopener noreferrer">Tsukuba Challenge Official Site</a></li>
-    <li>Hayashibara et al., GNSS-Aided Lidar Localization, ROBIO 2018</li>
-    <li>Shumon Koga et al., Active SLAM and Safe Motion Control for Mobile Robots</li>
-    <li>Koubaa et al., Robot Operating System (ROS): The Complete Reference, Springer</li>
-    <li><a href="https://introlab.github.io/rtabmap/" target="_blank" rel="noopener noreferrer">RTAB-Map Official Website</a></li>
-  </ul>
--->
+  <section>
+    <h2>Current Preparation</h2>
+    <p class="section-intro">
+      My current practical work is focused on building a foundation in ROS 2
+      and autonomous mobile-robot development. This preparation includes
+      simulation, robot modeling, state estimation, LiDAR SLAM, AMCL
+      localization, and navigation concepts.
+    </p>
+    <div class="note">
+      <strong>Research status:</strong>
+      The three-wheeled UGV topic is currently a research interest and proposed
+      direction. The completed practical work documented in this portfolio is
+      presented separately in the ROS 2 project journey.
+    </div>
+  </section>
 </main>
 
 <footer>
-  <p>© 2025 Ganesh Bhatkar | <a href="mailto:gsbhatkar@gmail.com">gsbhatkar@gmail.com</a></p>
+  <p>© 2026 Ganesh Bhatkar · Embedded Systems Engineer | Robotics & Autonomous Systems</p>
 </footer>
 
 </body>
