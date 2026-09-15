@@ -1,1 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>ROS 2 Autonomous Mobile Robot Journey | Ganesh Bhatkar</title>
+
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111c2e;
+      --panel-light: #16243a;
+      --text: #e7edf5;
+      --muted: #a8b5c7;
+      --accent: #38bdf8;
+      --accent-light: #22d3ee;
+      --border: #263852;
+      --warning: #fbbf24;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: #0a1020;
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+    }
+
+    .navbar {
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .content {
+      max-width: 1150px;
+      margin: 45px auto;
+      padding: 0 22px;
+    }
+
+    .hero {
+      margin-bottom: 45px;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      line-height: 1.25;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    .status {
+      display: inline-block;
+      border: 1px solid #1d607b;
+      border-radius: 20px;
+      padding: 4px 12px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      margin: 8px 0;
+    }
+
+    .status.progress {
+      color: var(--warning);
+      border-color: #795b1b;
+    }
+
+    .section {
+      margin: 55px 0;
+      scroll-margin-top: 25px;
+    }
+
+    .section h2 {
+      font-size: 1.9rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+    }
+
+    .section h3 {
+      color: var(--accent-light);
+      margin-top: 28px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    ul,
+    ol {
+      padding-left: 22px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 0.8rem;
+    }
+
+    pre {
+      background: #070d18;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      overflow-x: auto;
+      color: #d7e5f5;
+      font-family: Consolas, monospace;
+      font-size: 0.9rem;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    .architecture {
+      background: #070d18;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      white-space: pre-wrap;
+      font-family: Consolas, monospace;
+      color: var(--accent-light);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--panel-light);
+      color: var(--accent-light);
+    }
+
+    td {
+      color: var(--muted);
+    }
+
+    .media-placeholder {
+      background: var(--panel-light);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      color: var(--muted);
+      margin-top: 18px;
+    }
+
+    .media-placeholder strong {
+      color: var(--accent-light);
+    }
+
+    .btn {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      border-radius: 7px;
+      padding: 8px 13px;
+      color: var(--accent);
+      text-decoration: none;
+      margin: 5px 6px 5px 0;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .notice {
+      border-left: 3px solid var(--accent);
+      background: var(--panel);
+      border-radius: 6px;
+      padding: 18px;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      background: #0a1020;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .content {
+        padding: 0 16px;
+      }
+
+      th,
+      td {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">Ganesh Bhatkar</div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="ros-journey.html">ROS 2 Journey</a>
+        <a href="resume.html">Resume</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="content">
+
+    <!-- INTRODUCTION -->
+    <section class="hero">
+      <h1>ROS 2 Autonomous Mobile Robot Development</h1>
+
+      <span class="status progress">Continuous workspace project</span>
+
+      <p>
+        This project documents my transition from embedded-systems
+        development toward robotics and autonomous systems engineering.
+        The work was developed progressively inside a single ROS 2
+        workspace using simulation, sensor data, state estimation,
+        mapping, localization, and navigation.
+      </p>
+
+      <a class="btn"
+         href="https://github.com/GaneshBhatkar"
+         target="_blank">
+        GitHub Profile
+      </a>
+
+      <a class="btn"
+         href="https://github.com/GaneshBhatkar/GaneshBhatkar.github.io"
+         target="_blank">
+        Portfolio Repository
+      </a>
+    </section>
+
+    <!-- PROJECT OVERVIEW -->
+    <section class="section" id="overview">
+      <h2>1. Project Overview</h2>
+
+      <div class="panel">
+        <p>
+          Instead of developing unrelated ROS 2 demonstrations, I developed
+          the robot system incrementally in one workspace. Each stage builds
+          on the previous stage and adds another capability to the same
+          simulated mobile robot.
+        </p>
+
+        <div class="architecture">
+ROS 2 Workspace
+        |
+        +-- Mobile Robot Simulation
+        |
+        +-- Robot State Estimation using EKF
+        |
+        +-- 2D LiDAR SLAM
+        |
+        +-- AMCL Localization
+        |
+        +-- Autonomous Navigation using Nav2
+        </div>
+      </div>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Objective</h3>
+          <p>
+            Build a foundation for autonomous mobile robotics using ROS 2
+            and Gazebo simulation.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Robot Platform</h3>
+          <p>
+            Four-wheel mobile robot developed and tested in a simulated
+            environment.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Development Environment</h3>
+          <p>
+            ROS 2 Humble, Gazebo, RViz2, Python, Linux, and The Construct.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Project Approach</h3>
+          <p>
+            Incremental development, testing, visualization, debugging,
+            and documentation.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECHNOLOGIES -->
+    <section class="section" id="technologies">
+      <h2>2. Technologies Used</h2>
+
+      <div class="tags">
+        <span class="tag">ROS 2 Humble</span>
+        <span class="tag">Gazebo</span>
+        <span class="tag">RViz2</span>
+        <span class="tag">Python</span>
+        <span class="tag">URDF</span>
+        <span class="tag">TF2</span>
+        <span class="tag">LiDAR</span>
+        <span class="tag">IMU</span>
+        <span class="tag">Wheel Odometry</span>
+        <span class="tag">EKF</span>
+        <span class="tag">SLAM Toolbox</span>
+        <span class="tag">AMCL</span>
+        <span class="tag">Nav2</span>
+        <span class="tag">The Construct</span>
+        <span class="tag">Linux</span>
+      </div>
+    </section>
+
+    <!-- WORKSPACE -->
+    <section class="section" id="workspace">
+      <h2>3. ROS 2 Workspace</h2>
+
+      <div class="panel">
+        <p>
+          All stages were developed and tested inside the same ROS 2
+          workspace. The workspace contains the robot packages,
+          configuration files, launch files, maps, and supporting scripts.
+        </p>
+
+        <h3>Workspace preparation</h3>
+
+        <pre><code>source /opt/ros/humble/setup.bash
+
+mkdir -p ~/ros2_ws/src
+
+cd ~/ros2_ws
+
+colcon build
+
+source install/setup.bash</code></pre>
+
+        <p>
+          The commands above represent the general workspace workflow.
+          The actual package names and launch files are documented in the
+          project repository.
+        </p>
+      </div>
+
+      <h3>General workspace workflow</h3>
+
+      <ol>
+        <li>Source the ROS 2 environment.</li>
+        <li>Navigate to the workspace.</li>
+        <li>Build the workspace using <code>colcon build</code>.</li>
+        <li>Source the generated workspace environment.</li>
+        <li>Launch the required simulation and ROS 2 nodes.</li>
+        <li>Inspect topics, nodes, services, and transforms.</li>
+        <li>Test the robot in Gazebo and RViz2.</li>
+      </ol>
+
+      <div class="media-placeholder">
+        <strong>Workspace Screenshot</strong><br>
+        Add a screenshot showing your actual workspace structure here.
+      </div>
+    </section>
+
+    <!-- STAGE 1 -->
+    <section class="section" id="simulation">
+      <h2>4. Stage 1 — Mobile Robot Simulation</h2>
+
+      <span class="status">Completed in simulation</span>
+
+      <div class="panel">
+        <h3>Objective</h3>
+
+        <p>
+          Create and test a four-wheel mobile robot in Gazebo and understand
+          the basic communication between the robot, ROS 2 nodes, simulated
+          sensors, and RViz2.
+        </p>
+
+        <h3>Execution process</h3>
+
+        <ol>
+          <li>Source ROS 2 and the project workspace.</li>
+          <li>Build the workspace.</li>
+          <li>Launch the Gazebo simulation.</li>
+          <li>Spawn the mobile robot.</li>
+          <li>Start RViz2.</li>
+          <li>Inspect the robot model and TF2 frames.</li>
+          <li>Send velocity commands to the robot.</li>
+          <li>Verify robot movement and sensor topics.</li>
+        </ol>
+
+        <h3>Useful inspection commands</h3>
+
+        <pre><code>ros2 node list
+
+ros2 topic list
+
+ros2 topic info /cmd_vel
+
+ros2 topic echo /cmd_vel
+
+ros2 topic list | grep scan
+
+ros2 topic list | grep imu</code></pre>
+
+        <h3>Basic system flow</h3>
+
+        <div class="architecture">
+Gazebo
+  |
+  +-- Mobile Robot
+  |
+  +-- Simulated Sensors
+  |      |
+  |      +-- LiDAR
+  |      +-- IMU
+  |      +-- Wheel Odometry
+  |
+  +-- ROS 2 Topics
+         |
+         +-- /cmd_vel
+         +-- /scan
+         +-- /imu
+         +-- /odom
+        </div>
+
+        <h3>Result</h3>
+
+        <p>
+          The mobile robot was simulated in Gazebo and visualized in RViz2.
+          The simulation established the foundation for later state
+          estimation, SLAM, localization, and navigation stages.
+        </p>
+
+        <div class="media-placeholder">
+          <strong>Add Simulation Evidence</strong><br>
+          Insert your Gazebo screenshot, RViz2 screenshot, and simulation
+          video link here.
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 2 -->
+    <section class="section" id="ekf">
+      <h2>5. Stage 2 — Robot State Estimation using EKF</h2>
+
+      <span class="status">Implemented</span>
+
+      <div class="panel">
+        <h3>Objective</h3>
+
+        <p>
+          Estimate the robot's position and orientation by combining wheel
+          odometry and IMU measurements using an Extended Kalman Filter.
+        </p>
+
+        <h3>Input data</h3>
+
+        <table>
+          <tr>
+            <th>Input</th>
+            <th>Purpose</th>
+          </tr>
+
+          <tr>
+            <td>Wheel odometry</td>
+            <td>Provides estimated robot motion from wheel movement.</td>
+          </tr>
+
+          <tr>
+            <td>IMU data</td>
+            <td>Provides inertial measurements such as orientation and angular motion.</td>
+          </tr>
+
+          <tr>
+            <td>EKF configuration</td>
+            <td>Defines which measurements are fused by the filter.</td>
+          </tr>
+        </table>
+
+        <h3>System architecture</h3>
+
+        <div class="architecture">
+Wheel Odometry -----------+
+                           |
+                           +----> EKF ----> Filtered Odometry
+                           |
+IMU Data -----------------+
+        </div>
+
+        <h3>Execution process</h3>
+
+        <ol>
+          <li>Start the mobile robot simulation.</li>
+          <li>Verify wheel-odometry data.</li>
+          <li>Verify IMU data.</li>
+          <li>Load the EKF configuration.</li>
+          <li>Start the state-estimation node.</li>
+          <li>Inspect the filtered odometry output.</li>
+          <li>Visualize the robot pose in RViz2.</li>
+          <li>Check the relevant TF2 relationships.</li>
+        </ol>
+
+        <h3>Important topics</h3>
+
+        <table>
+          <tr>
+            <th>Topic</th>
+            <th>Purpose</th>
+          </tr>
+
+          <tr>
+            <td><code>/odom</code></td>
+            <td>Wheel-odometry information.</td>
+          </tr>
+
+          <tr>
+            <td><code>/imu/data</code></td>
+            <td>IMU measurements.</td>
+          </tr>
+
+          <tr>
+            <td><code>/odometry/filtered</code></td>
+            <td>Filtered state-estimation output, if used in the implementation.</td>
+          </tr>
+        </table>
+
+        <h3>Result</h3>
+
+        <p>
+          Sensor-fusion concepts were applied to combine odometry and IMU
+          information for mobile-robot state estimation.
+        </p>
+
+        <div class="media-placeholder">
+          <strong>Add EKF Evidence</strong><br>
+          Insert your EKF configuration screenshot, RViz2 visualization,
+          and video demonstration here.
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 3 -->
+    <section class="section" id="slam">
+      <h2>6. Stage 3 — 2D LiDAR SLAM</h2>
+
+      <span class="status">Implemented</span>
+
+      <div class="panel">
+        <h3>Objective</h3>
+
+        <p>
+          Generate a two-dimensional occupancy-grid map of the simulated
+          environment using LiDAR data and SLAM Toolbox.
+        </p>
+
+        <h3>Execution process</h3>
+
+        <ol>
+          <li>Start the mobile robot simulation.</li>
+          <li>Verify that LiDAR data is being published.</li>
+          <li>Launch SLAM Toolbox.</li>
+          <li>Open RViz2 and display the laser scan and map.</li>
+          <li>Move the robot through the simulated environment.</li>
+          <li>Observe the map being generated.</li>
+          <li>Save the completed map.</li>
+        </ol>
+
+        <h3>System architecture</h3>
+
+        <div class="architecture">
+LiDAR Data
+    |
+    v
+SLAM Toolbox
+    |
+    +----> Robot Pose Estimate
+    |
+    +----> Occupancy-Grid Map
+    |
+    v
+Saved Map
+        </div>
+
+        <h3>Map output</h3>
+
+        <p>
+          The saved map normally contains a map metadata file and an image
+          file. The exact filenames depend on the map-saving command used.
+        </p>
+
+        <pre><code>ros2 run nav2_map_server map_saver_cli \
+  -f ~/ros2_ws/maps/warehouse_map</code></pre>
+
+        <h3>Result</h3>
+
+        <p>
+          A 2D occupancy-grid map was generated from simulated LiDAR data
+          and saved for use in the localization stage.
+        </p>
+
+        <div class="media-placeholder">
+          <strong>Add SLAM Evidence</strong><br>
+          Add screenshots showing the initial map, partially generated map,
+          completed map, and saved map files.
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 4 -->
+    <section class="section" id="amcl">
+      <h2>7. Stage 4 — AMCL Localization</h2>
+
+      <span class="status">Implemented</span>
+
+      <div class="panel">
+        <h3>Objective</h3>
+
+        <p>
+          Localize the simulated mobile robot on a previously generated map
+          using the Map Server, AMCL, LiDAR data, and odometry.
+        </p>
+
+        <h3>Execution process</h3>
+
+        <ol>
+          <li>Start the Gazebo simulation.</li>
+          <li>Load the previously saved map.</li>
+          <li>Start the Map Server.</li>
+          <li>Start AMCL.</li>
+          <li>Start RViz2.</li>
+          <li>Set the robot's initial pose.</li>
+          <li>Move the robot around the environment.</li>
+          <li>Observe the localization estimate.</li>
+          <li>Inspect the relevant TF2 frames.</li>
+        </ol>
+
+        <h3>System architecture</h3>
+
+        <div class="architecture">
+Saved Map -----------+
+                     |
+LiDAR Data ----------+----> AMCL ----> Robot Localization
+                     |
+Odometry ------------+
+        </div>
+
+        <h3>Important components</h3>
+
+        <table>
+          <tr>
+            <th>Component</th>
+            <th>Purpose</th>
+          </tr>
+
+          <tr>
+            <td>Map Server</td>
+            <td>Provides the previously saved map.</td>
+          </tr>
+
+          <tr>
+            <td>AMCL</td>
+            <td>Estimates the robot's pose on the known map.</td>
+          </tr>
+
+          <tr>
+            <td>LiDAR</td>
+            <td>Provides range measurements used for localization.</td>
+          </tr>
+
+          <tr>
+            <td>Odometry</td>
+            <td>Provides robot-motion information.</td>
+          </tr>
+        </table>
+
+        <h3>Result</h3>
+
+        <p>
+          The robot was localized on the previously generated map using
+          AMCL and simulated sensor data.
+        </p>
+
+        <div class="media-placeholder">
+          <strong>Add AMCL Evidence</strong><br>
+          Add an RViz2 screenshot showing the map, robot pose, laser scan,
+          and localization result.
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 5 -->
+    <section class="section" id="nav2">
+      <h2>8. Stage 5 — Autonomous Navigation using Nav2</h2>
+
+      <span class="status progress">In progress</span>
+
+      <div class="panel">
+        <h3>Objective</h3>
+
+        <p>
+          Develop point-to-point autonomous navigation using Nav2, including
+          path planning, controller behavior, costmaps, goal execution,
+          and obstacle avoidance.
+        </p>
+
+        <h3>Execution process</h3>
+
+        <ol>
+          <li>Start the Gazebo simulation.</li>
+          <li>Load the saved map.</li>
+          <li>Start localization.</li>
+          <li>Launch the Nav2 stack.</li>
+          <li>Verify global and local costmaps.</li>
+          <li>Set an initial robot pose in RViz2.</li>
+          <li>Send a navigation goal.</li>
+          <li>Observe the planned path.</li>
+          <li>Check robot movement and controller behavior.</li>
+          <li>Test obstacle avoidance.</li>
+        </ol>
+
+        <h3>System architecture</h3>
+
+        <div class="architecture">
+Saved Map -----------+
+                     |
+AMCL ----------------+
+                     |
+LiDAR ----------------+----> Nav2
+                     |         |
+Odometry ------------+         +----> Global Planner
+                               |
+                               +----> Local Controller
+                               |
+                               +----> Costmaps
+                               |
+                               v
+                         Robot Motion
+        </div>
+
+        <h3>Areas being evaluated</h3>
+
+        <ul>
+          <li>Navigation configuration</li>
+          <li>Global and local costmaps</li>
+          <li>Path-planner behavior</li>
+          <li>Controller behavior</li>
+          <li>Goal-pose execution</li>
+          <li>Obstacle avoidance</li>
+          <li>Robot stopping and recovery behavior</li>
+        </ul>
+
+        <h3>Current status</h3>
+
+        <p>
+          The Nav2 stage is being completed and tested. The final status
+          will be updated after the complete navigation workflow has been
+          verified.
+        </p>
+
+        <div class="media-placeholder">
+          <strong>Add Nav2 Evidence</strong><br>
+          Add the final navigation screenshot and video after successful
+          point-to-point navigation testing.
+        </div>
+      </div>
+    </section>
+
+    <!-- DEBUGGING -->
+    <section class="section" id="debugging">
+      <h2>9. Debugging and Validation</h2>
+
+      <div class="panel">
+        <p>
+          During the project, debugging and validation involved checking
+          ROS 2 nodes, topics, transforms, sensor outputs, robot movement,
+          and visualization settings.
+        </p>
+
+        <table>
+          <tr>
+            <th>Area</th>
+            <th>Validation method</th>
+          </tr>
+
+          <tr>
+            <td>ROS 2 nodes</td>
+            <td>Inspect active nodes using <code>ros2 node list</code>.</td>
+          </tr>
+
+          <tr>
+            <td>Topics</td>
+            <td>Check available topics and inspect message data.</td>
+          </tr>
+
+          <tr>
+            <td>TF2</td>
+            <td>Check frame names and relationships.</td>
+          </tr>
+
+          <tr>
+            <td>Sensor data</td>
+            <td>Verify LiDAR, IMU, and odometry messages.</td>
+          </tr>
+
+          <tr>
+            <td>Robot movement</td>
+            <td>Test velocity commands and observe the robot in Gazebo.</td>
+          </tr>
+
+          <tr>
+            <td>RViz2</td>
+            <td>Check fixed frame, robot model, laser scan, map, and pose.</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="section" id="videos">
+      <h2>10. Simulation Videos</h2>
+
+      <p>
+        The videos below will demonstrate the execution of the project
+        stages inside the same ROS 2 workspace.
+      </p>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Video 1 — Mobile Robot Simulation</h3>
+          <p>
+            Gazebo simulation, robot spawning, RViz2 visualization, and
+            velocity control.
+          </p>
+
+          <a class="btn" href="#" onclick="return false;">
+            Add Video Link
+          </a>
+        </div>
+
+        <div class="card">
+          <h3>Video 2 — EKF State Estimation</h3>
+          <p>
+            IMU and odometry sensor fusion with EKF.
+          </p>
+
+          <a class="btn" href="#" onclick="return false;">
+            Add Video Link
+          </a>
+        </div>
+
+        <div class="card">
+          <h3>Video 3 — LiDAR SLAM</h3>
+          <p>
+            Map generation and map-saving process.
+          </p>
+
+          <a class="btn" href="#" onclick="return false;">
+            Add Video Link
+          </a>
+        </div>
+
+        <div class="card">
+          <h3>Video 4 — AMCL Localization</h3>
+          <p>
+            Robot localization on the saved map.
+          </p>
+
+          <a class="btn" href="#" onclick="return false;">
+            Add Video Link
+          </a>
+        </div>
+
+        <div class="card">
+          <h3>Video 5 — Nav2 Navigation</h3>
+          <p>
+            Autonomous point-to-point navigation and obstacle avoidance.
+          </p>
+
+          <a class="btn" href="#" onclick="return false;">
+            Add Video Link
+          </a>
+        </div>
+
+      </div>
+
+      <div class="notice">
+        Replace the video placeholders with your actual YouTube or video
+        links after uploading the demonstrations.
+      </div>
+    </section>
+
+    <!-- LESSONS -->
+    <section class="section" id="lessons">
+      <h2>11. Lessons Learned</h2>
+
+      <div class="panel">
+        <ul>
+          <li>
+            ROS 2 nodes, topics, and message types form the basic
+            communication structure of a robotic system.
+          </li>
+
+          <li>
+            Correct TF2 frame relationships are essential for robot
+            visualization, mapping, localization, and navigation.
+          </li>
+
+          <li>
+            Sensor data must be inspected and validated before it is used
+            by higher-level algorithms.
+          </li>
+
+          <li>
+            State estimation provides a foundation for mapping and
+            autonomous navigation.
+          </li>
+
+          <li>
+            SLAM and localization are different processes: SLAM creates a
+            map, while AMCL estimates the robot's position on an existing
+            map.
+          </li>
+
+          <li>
+            Autonomous navigation depends on the correct integration of
+            maps, localization, sensors, costmaps, planners, and
+            controllers.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FUTURE WORK -->
+    <section class="section" id="future">
+      <h2>12. Future Improvements</h2>
+
+      <div class="panel">
+        <ul>
+          <li>Complete and validate the Nav2 navigation stage.</li>
+          <li>Add detailed screenshots and technical diagrams.</li>
+          <li>Document the actual package and launch-file structure.</li>
+          <li>Improve robot dynamics and sensor configuration.</li>
+          <li>Study ROS 2 lifecycle nodes and launch management.</li>
+          <li>Explore real LiDAR, IMU, and wheel-encoder integration.</li>
+          <li>Study embedded-controller integration with ROS 2.</li>
+          <li>Extend the simulation toward a real autonomous robot platform.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SOURCE -->
+    <section class="section" id="source">
+      <h2>13. Source Code</h2>
+
+      <div class="panel">
+        <p>
+          The source code, configuration files, launch files, maps, and
+          supporting resources will be published in the associated GitHub
+          repository after cleaning unnecessary generated files and
+          verifying that no private information is included.
+        </p>
+
+        <a class="btn"
+           href="https://github.com/GaneshBhatkar"
+           target="_blank">
+          View GitHub
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © 2026 Ganesh Bhatkar |
+      <a href="mailto:gsbhatkar@gmail.com">
+        gsbhatkar@gmail.com
+      </a>
+    </p>
+  </footer>
+
+</body>
+</html>
