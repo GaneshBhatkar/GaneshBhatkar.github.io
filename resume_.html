@@ -2,268 +2,138 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Resume of Ganesh Bhatkar — Embedded Systems Engineer focused on Robotics and Autonomous Systems." />
-  <title>Resume | Ganesh Bhatkar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume – Ganesh Bhatkar</title>
   <style>
-    :root {
-      --bg: #080d18;
-      --surface: #101827;
-      --surface-2: #151f31;
-      --text: #e7edf7;
-      --muted: #9baac0;
-      --accent: #61dafb;
-      --accent-2: #8b9cff;
-      --border: rgba(255,255,255,.10);
-      --shadow: 0 18px 45px rgba(0,0,0,.28);
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f9f9;
+      color: #2f3e46;
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(97,218,251,.08), transparent 32rem),
-        var(--bg);
-      color: var(--text);
+      padding: 0;
+    }
+    header {
+      background-color: #005f73;
+      padding: 20px 0;
+    }
+    .navbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fefae0;
+      text-decoration: none;
+    }
+    .nav-links a {
+      color: #fefae0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
       line-height: 1.6;
     }
-
-    a { color: inherit; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(8,13,24,.92);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(14px);
+    h1, h2 {
+      color: #0a9396;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
     }
-
-    .navbar {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: .4px;
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 18px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: .94rem;
-      font-weight: 600;
-      transition: color .2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--accent);
-    }
-
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 72px 24px 90px;
-    }
-
-    .hero {
-      margin-bottom: 34px;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-size: .82rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
     h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 1.1;
-      letter-spacing: -1px;
-    }
-
-    .hero p {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 1.08rem;
-      margin: 0;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 26px 0;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 11px 18px;
-      border-radius: 9px;
-      border: 1px solid var(--border);
-      background: var(--surface-2);
-      color: var(--text);
-      text-decoration: none;
+      font-size: 1.8rem;
       font-weight: 700;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      border-bottom: 3px solid #94d2bd;
+      padding-bottom: 10px;
     }
-
-    .btn.primary {
-      background: var(--accent);
-      color: #06101a;
-      border-color: var(--accent);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
-    }
-
-    .resume-panel {
-      background: linear-gradient(145deg, rgba(16,24,39,.98), rgba(21,31,49,.92));
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .panel-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .panel-heading h2 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-
-    .status {
-      color: var(--accent);
-      font-size: .8rem;
-      font-weight: 700;
-      border: 1px solid rgba(97,218,251,.35);
-      border-radius: 999px;
-      padding: 4px 10px;
-      white-space: nowrap;
-    }
-
     .pdf-container {
+      margin: 20px 0;
+      border: 2px solid #94d2bd;
+      border-radius: 8px;
       overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: #202735;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-
     iframe {
-      display: block;
       width: 100%;
-      height: 820px;
-      border: 0;
+      height: 700px;
+      border: none;
+      display: block;
     }
-
-    .note {
-      color: var(--muted);
-      font-size: .9rem;
-      margin: 16px 0 0;
+    .download-btn {
+      display: inline-block;
+      background-color: #005f73;
+      color: #fefae0;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
     }
-
+    .download-btn:hover {
+      background-color: #0a9396;
+    }
     footer {
-      border-top: 1px solid var(--border);
-      color: var(--muted);
+      background-color: #005f73;
+      color: #fefae0;
       text-align: center;
-      padding: 24px;
-      font-size: .9rem;
-    }
-
-    @media (max-width: 760px) {
-      .navbar { align-items: flex-start; flex-direction: column; }
-      .nav-links { justify-content: flex-start; gap: 12px 16px; }
-      main { padding-top: 48px; }
-      .resume-panel { padding: 14px; }
-      iframe { height: 650px; }
-      .panel-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
+      padding: 15px 20px;
+      font-size: 0.9rem;
+      margin-top: 40px;
     }
   </style>
+
+<style id="unified-robotics-theme">
+:root{--bg:#0b1220;--surface:#111c2e;--surface2:#17263b;--text:#e7edf5;--muted:#aab8ca;--accent:#58d5c9;--accent2:#8bb8ff;--border:#263852;}
+html,body{background:var(--bg)!important;color:var(--text)!important;}
+body{font-family:Inter,Segoe UI,Arial,sans-serif!important;}
+header,nav,.navbar,.site-header{background:var(--surface)!important;color:var(--text)!important;}
+main,section,article,.container,.content,.hero,.card,.project-card,.skill-card,.timeline-item,.research-card,.resume-container,.panel,.box{color:var(--text)!important;}
+.card,.project-card,.skill-card,.timeline-item,.research-card,.panel,.box,section article{background:var(--surface)!important;border-color:var(--border)!important;}
+h1,h2,h3,h4,h5,h6,strong{color:var(--text)!important;}
+p,li,small,.muted,.subtitle,.description{color:var(--muted)!important;}
+a{color:var(--accent2)!important;}
+a:hover{color:var(--accent)!important;}
+button,.btn,.button{background:var(--accent)!important;color:#08131e!important;border-color:var(--accent)!important;}
+button:hover,.btn:hover,.button:hover{background:var(--accent2)!important;color:#08131e!important;}
+footer{background:var(--surface)!important;color:var(--muted)!important;border-color:var(--border)!important;}
+hr{border-color:var(--border)!important;}
+code,pre{background:#08131e!important;color:var(--text)!important;border-color:var(--border)!important;}
+</style>
 </head>
 <body>
   <header>
-    <nav class="navbar" aria-label="Main navigation">
-      <a href="index.html" class="logo">Ganesh Bhatkar</a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="skills.html">Skills</a>
-        <a href="projects.html">Projects</a>
-        <a href="research.html">Research</a>
-        <a href="ros-journey.html">ROS 2 Journey</a>
-        <a href="resume.html" class="active">Resume</a>
-      </div>
-    </nav>
+
   </header>
 
   <main>
-    <section class="hero">
-      <div class="eyebrow">Professional Profile</div>
-      <h1>Resume</h1>
-      <p>
-        Embedded Systems Engineer focused on robotics, autonomous systems,
-        firmware development, and hardware–software integration.
-      </p>
+    <h1>Resume</h1>
 
-      <div class="actions">
-        <a class="btn primary" href="CV_Ganesh_Bhatkar.pdf" download>Download Resume PDF</a>
-        <a class="btn" href="projects.html">View Projects</a>
-        <a class="btn" href="ros-journey.html">ROS 2 Journey</a>
-      </div>
-    </section>
+    <!-- Embed the PDF -->
+    <div class="pdf-container">
+      <iframe src="Ganesh_Bhatkar_Resume.pdf" title="Ganesh Bhatkar Resume PDF"></iframe>
+    </div>
 
-    <section class="resume-panel" aria-labelledby="resume-preview-title">
-      <div class="panel-heading">
-        <h2 id="resume-preview-title">Resume Preview</h2>
-        <span class="status">PDF Document</span>
-      </div>
-
-      <div class="pdf-container">
-        <iframe src="CV_Ganesh_Bhatkar.pdf" title="Ganesh Bhatkar Resume PDF"></iframe>
-      </div>
-
-      <p class="note">
-        If the preview does not load in your browser, use the download button above
-        to open the PDF directly.
-      </p>
-    </section>
+    <!-- Download Button -->
+    <a href="Ganesh_Bhatkar_Resume.pdf" download class="download-btn" aria-label="Download Resume PDF">
+      Download Resume PDF
+    </a>
   </main>
 
   <footer>
-    &copy; 2026 Ganesh Bhatkar. Built for embedded systems and robotics opportunities.
+    &copy; 2025 Ganesh Bhatkar | All rights reserved.
   </footer>
 </body>
 </html>
