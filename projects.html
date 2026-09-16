@@ -3,77 +3,786 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Projects | Ganesh Bhatkar</title>
+
   <style>
-    :root{--bg:#0b1220;--panel:#111c2e;--panel2:#16243a;--text:#e7edf5;--muted:#a8b5c7;--accent:#38bdf8;--accent2:#22d3ee;--border:#263852}
-    *{box-sizing:border-box} body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    header{background:#0a1020;border-bottom:1px solid var(--border);padding:20px}
-    .navbar{max-width:1150px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.logo{font-size:1.5rem;font-weight:700}.nav-links{display:flex;gap:18px;flex-wrap:wrap}.nav-links a{color:var(--muted);text-decoration:none}.nav-links a:hover{color:var(--accent)}
-    .content{max-width:1150px;margin:45px auto;padding:0 22px}.intro{margin-bottom:42px}.intro h1{font-size:2.5rem;margin:0 0 10px}.intro p{color:var(--muted);max-width:800px}
-    .section{margin:55px 0}.section h2{font-size:1.8rem;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:24px}.section-note{color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:23px;display:flex;flex-direction:column}.card h3{margin:0 0 8px;color:var(--accent2);font-size:1.2rem}.card p{color:var(--muted);margin:8px 0 15px}.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:10px}.tag,.status{font-size:.78rem;border:1px solid var(--border);border-radius:20px;padding:3px 9px;color:var(--text)}.status{display:inline-block;margin-bottom:12px;width:max-content;color:var(--accent);border-color:#1d607b}.status.progress{color:#fbbf24;border-color:#795b1b}.links{margin-top:16px}.btn{display:inline-block;border:1px solid var(--accent);border-radius:7px;padding:7px 12px;color:var(--accent);text-decoration:none;font-size:.9rem;margin:4px 5px 0 0}.btn:hover{background:var(--accent);color:var(--bg)}
-    .tabs{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}.tab-button{background:var(--panel2);border:1px solid var(--border);color:var(--text);padding:9px 13px;border-radius:7px;cursor:pointer}.tab-button.active,.tab-button:hover{background:var(--accent);color:var(--bg)}.project-content{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:22px}.project-title{font-size:1.2rem;font-weight:700;color:var(--accent2)}.project-desc{color:var(--muted)}
-    footer{text-align:center;padding:28px;background:#0a1020;color:var(--muted);border-top:1px solid var(--border)}footer a{color:var(--accent)}
+    :root {
+      --bg: #0b1220;
+      --panel: #111c2e;
+      --panel-light: #16243a;
+      --text: #e7edf5;
+      --muted: #a8b5c7;
+      --accent: #38bdf8;
+      --accent-light: #22d3ee;
+      --border: #263852;
+      --warning: #fbbf24;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0a1020;
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+    }
+
+    .navbar {
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .content {
+      max-width: 1150px;
+      margin: 45px auto;
+      padding: 0 22px;
+    }
+
+    .intro {
+      margin-bottom: 42px;
+    }
+
+    .intro h1 {
+      font-size: 2.5rem;
+      margin: 0 0 10px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      max-width: 850px;
+    }
+
+    .section {
+      margin: 55px 0;
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+    }
+
+    .section-note {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 23px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      color: var(--accent-light);
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 8px 0 15px;
+    }
+
+    .status {
+      display: inline-block;
+      width: max-content;
+      font-size: 0.78rem;
+      border: 1px solid #1d607b;
+      border-radius: 20px;
+      padding: 3px 9px;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .status.progress {
+      color: var(--warning);
+      border-color: #795b1b;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 9px;
+      color: var(--text);
+    }
+
+    .links {
+      margin-top: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      border-radius: 7px;
+      padding: 7px 12px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin: 4px 5px 0 0;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tab-button {
+      background: var(--panel-light);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 13px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .tab-button.active,
+    .tab-button:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .project-content {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+
+    .project-desc {
+      color: var(--muted);
+    }
+
+    .notice {
+      border-left: 3px solid var(--accent);
+      background: var(--panel);
+      padding: 15px 18px;
+      color: var(--muted);
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      background: #0a1020;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      .intro h1 {
+        font-size: 2rem;
+      }
+
+      .navbar {
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+    }
   </style>
-
-<style id="unified-robotics-theme">
-:root{--bg:#0b1220;--surface:#111c2e;--surface2:#17263b;--text:#e7edf5;--muted:#aab8ca;--accent:#58d5c9;--accent2:#8bb8ff;--border:#263852;}
-html,body{background:var(--bg)!important;color:var(--text)!important;}
-body{font-family:Inter,Segoe UI,Arial,sans-serif!important;}
-header,nav,.navbar,.site-header{background:var(--surface)!important;color:var(--text)!important;}
-main,section,article,.container,.content,.hero,.card,.project-card,.skill-card,.timeline-item,.research-card,.resume-container,.panel,.box{color:var(--text)!important;}
-.card,.project-card,.skill-card,.timeline-item,.research-card,.panel,.box,section article{background:var(--surface)!important;border-color:var(--border)!important;}
-h1,h2,h3,h4,h5,h6,strong{color:var(--text)!important;}
-p,li,small,.muted,.subtitle,.description{color:var(--muted)!important;}
-a{color:var(--accent2)!important;}
-a:hover{color:var(--accent)!important;}
-button,.btn,.button{background:var(--accent)!important;color:#08131e!important;border-color:var(--accent)!important;}
-button:hover,.btn:hover,.button:hover{background:var(--accent2)!important;color:#08131e!important;}
-footer{background:var(--surface)!important;color:var(--muted)!important;border-color:var(--border)!important;}
-hr{border-color:var(--border)!important;}
-code,pre{background:#08131e!important;color:var(--text)!important;border-color:var(--border)!important;}
-</style>
 </head>
+
 <body>
-<header><nav class="navbar"><div class="logo">Ganesh Bhatkar</div><div class="nav-links"><a href="index.html">Home</a><a href="skills.html">Skills</a><a href="projects.html">Projects</a><a href="research.html">Research</a><a href="ros-journey.html">ROS 2 Journey</a><a href="resume.html">Resume</a></div></nav></header>
 
-<main class="content">
-  <section class="intro"><h1>Projects</h1><p>A collection of my robotics learning work, embedded-systems experiments, computer-vision projects, and software tools. Industry experience is presented only at a non-confidential, high level.</p></section>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Ganesh Bhatkar</div>
 
-  <section class="section"><h2>🤖 Robotics & Autonomous Systems</h2><p class="section-note">My ROS 2 and Gazebo learning path. Detailed documentation, simulation screenshots, and videos will be added as each project is documented.</p>
-    <div class="grid">
-      <article class="card"><span class="status">Completed in simulation</span><h3>Autonomous Mobile Robot Simulation</h3><p>Developed a four-wheel mobile robot simulation using ROS 2 and Gazebo, including robot modeling, sensor simulation, TF2, and velocity control.</p><div class="tags"><span class="tag">ROS 2</span><span class="tag">Gazebo</span><span class="tag">RViz2</span><span class="tag">TF2</span></div></article>
-      <article class="card"><span class="status">Implemented</span><h3>Robot State Estimation using EKF</h3><p>Used IMU and wheel-odometry data with an Extended Kalman Filter to estimate the mobile robot’s position and orientation.</p><div class="tags"><span class="tag">EKF</span><span class="tag">IMU</span><span class="tag">Odometry</span><span class="tag">ROS 2</span></div></article>
-      <article class="card"><span class="status">Implemented</span><h3>2D LiDAR SLAM</h3><p>Generated and saved 2D occupancy-grid maps using LiDAR-based SLAM with SLAM Toolbox.</p><div class="tags"><span class="tag">LiDAR</span><span class="tag">SLAM Toolbox</span><span class="tag">Mapping</span></div></article>
-      <article class="card"><span class="status">Implemented</span><h3>AMCL Localization</h3><p>Localized the mobile robot on a previously generated map using AMCL, a map server, LiDAR data, and the ROS 2 navigation ecosystem.</p><div class="tags"><span class="tag">AMCL</span><span class="tag">Map Server</span><span class="tag">LiDAR</span></div></article>
-      <article class="card"><span class="status progress">In progress</span><h3>Autonomous Navigation using Nav2</h3><p>Developing point-to-point autonomous navigation with Nav2, including path planning, controller behavior, and obstacle avoidance.</p><div class="tags"><span class="tag">Nav2</span><span class="tag">Planning</span><span class="tag">Navigation</span></div></article>
-    </div>
-  </section>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="ros-journey.html">ROS 2 Journey</a>
+        <a href="resume.html">Resume</a>
+      </div>
+    </nav>
+  </header>
 
-  <section class="section"><h2>🖼️ Computer Vision & Image Processing</h2><p class="section-note">OpenCV and Python experiments from my perception-learning work.</p>
-    <div class="tabs"><button class="tab-button active" onclick="showProject('ip1',this)">Webcam</button><button class="tab-button" onclick="showProject('ip2',this)">Grayscale & Blur</button><button class="tab-button" onclick="showProject('ip3',this)">Canny Edge</button><button class="tab-button" onclick="showProject('ip4',this)">Color Masking</button><button class="tab-button" onclick="showProject('ip5',this)">Contours</button><button class="tab-button" onclick="showProject('ip6',this)">Image Processing</button><button class="tab-button" onclick="showProject('ip7',this)">Color Tracking</button><button class="tab-button" onclick="showProject('ip8',this)">Decision Logic</button></div>
-    <div id="ip1" class="project-content"><div class="project-title">Webcam Basics</div><p class="project-desc">Real-time video-frame reading with OpenCV.</p><a class="btn" href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/01_webcam_basics.py" target="_blank">GitHub</a><a class="btn" href="https://youtu.be/zE28FQhIUu4" target="_blank">Demo Video</a></div>
-    <div id="ip2" class="project-content" style="display:none"><div class="project-title">Grayscale Blurring</div><p class="project-desc">Basic image preprocessing using grayscale conversion and blurring.</p><a class="btn" href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/02_Grayscale_Blurring.py" target="_blank">GitHub</a><a class="btn" href="https://youtu.be/35i23GERI1g" target="_blank">Demo Video</a></div>
-    <div id="ip3" class="project-content" style="display:none"><div class="project-title">Canny Edge Detector</div><p class="project-desc">Real-time edge detection on a video feed.</p><a class="btn" href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/03_Canny_Edge_Detector.py" target="_blank">GitHub</a><a class="btn" href="https://youtu.be/JuK82WOXZ_g" target="_blank">Demo Video</a></div>
-    <div id="ip4" class="project-content" style="display:none"><div class="project-title">Color Masking</div><p class="project-desc">Color masking and color-based detection using OpenCV and Python.</p><a class="btn" href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/04_Color_Masking.py" target="_blank">GitHub</a><a class="btn" href="https://youtu.be/Zu-iJX2OPug" target="_blank">Demo Video</a></div>
-    <div id="ip5" class="project-content" style="display:none"><div class="project-title">Contour Detection</div><p class="project-desc">Applied contours to color-detected objects.</p><a class="btn" href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/05_Contours_box%20.py" target="_blank">GitHub</a><a class="btn" href="https://youtu.be/EyhnmjwB6Lc" target="_blank">Demo Video</a></div>
-    <div id="ip6" class="project-content" style="display:none"><div class="project-title">Image Processing</div><p class="project-desc">Read and process images using OpenCV and Python.</p><a class="btn" href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/06_Image_process.py" target="_blank">GitHub</a><a class="btn" href="https://youtu.be/LBlkcWXnMqc" target="_blank">Demo Video</a></div>
-    <div id="ip7" class="project-content" style="display:none"><div class="project-title">Color Tracking</div><p class="project-desc">Detected and tracked a red object in a video stream.</p><a class="btn" href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/07_object_tracking.py" target="_blank">GitHub</a><a class="btn" href="https://youtu.be/DkNv3nIzuVw" target="_blank">Demo Video</a></div>
-    <div id="ip8" class="project-content" style="display:none"><div class="project-title">Decision Logic</div><p class="project-desc">Detected a red object and selected a direction using basic vision logic.</p><a class="btn" href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/08_decision_logic.py" target="_blank">GitHub</a><a class="btn" href="https://youtu.be/tPTrgkY8Sl4" target="_blank">Demo Video</a></div>
-  </section>
+  <main class="content">
 
-  <section class="section"><h2>🐍 Python Projects</h2><div class="grid">
-    <article class="card"><h3>Modbus-Terminal</h3><p>Python terminal tool for analyzing Modbus slave data over TCP or RTU connections.</p><div class="links"><a class="btn" href="https://github.com/GaneshBhatkar/Modbus-Terminal" target="_blank">GitHub</a><a class="btn" href="https://youtu.be/q5H6agDDBCQ" target="_blank">Demo Video</a></div></article>
-    <article class="card"><h3>Calculator</h3><p>Simple Python and Qt GUI-based calculator.</p><div class="links"><a class="btn" href="https://github.com/GaneshBhatkar/Calculator" target="_blank">GitHub</a><a class="btn" href="https://youtube.com/shorts/fBaEg7bXjB8" target="_blank">Demo Video</a></div></article>
-    <article class="card"><h3>Currency Converter</h3><p>A basic currency-conversion application developed using Python.</p><div class="links"><a class="btn" href="https://github.com/GaneshBhatkar/Currency-Convertor_1" target="_blank">GitHub</a></div></article>
-  </div></section>
+    <section class="intro">
+      <h1>Projects</h1>
 
-  <section class="section"><h2>🔧 Embedded Systems & Industry Experience</h2><p class="section-note">The following summaries describe my professional engineering experience at a high level. Proprietary source code, schematics, machine specifications, customer information, and confidential implementation details are intentionally excluded.</p><div class="grid">
-    <article class="card"><h3>Industrial Machine-Control Firmware</h3><p>Developing PIC32 firmware for an industrial machine-control application, including machine sequencing, sensor monitoring, actuator control, fault handling, and HMI communication.</p><div class="tags"><span class="tag">PIC32</span><span class="tag">Embedded C</span><span class="tag">MPLAB Harmony</span><span class="tag">Nextion HMI</span></div></article>
-    <article class="card"><h3>Medical Equipment Firmware</h3><p>Developed and tested STM32 embedded firmware for medical equipment applications, including peripheral communication, hardware integration, debugging, and product-level testing.</p><div class="tags"><span class="tag">STM32</span><span class="tag">UART</span><span class="tag">SPI</span><span class="tag">I²C</span></div></article>
-    <article class="card"><h3>Industrial Automation Controllers</h3><p>Worked on embedded firmware, DWIN HMI logic, controller interfacing, Modbus communication, hardware integration, and functional testing for industrial automation systems.</p><div class="tags"><span class="tag">STM32</span><span class="tag">AVR</span><span class="tag">DWIN HMI</span><span class="tag">Modbus</span></div></article>
-  </div></section>
-</main>
-<footer><p>© 2026 Ganesh Bhatkar | <a href="mailto:gsbhatkar@gmail.com">gsbhatkar@gmail.com</a></p></footer>
-<script>function showProject(id,button){document.querySelectorAll('.project-content').forEach(el=>el.style.display='none');document.getElementById(id).style.display='block';document.querySelectorAll('.tab-button').forEach(btn=>btn.classList.remove('active'));button.classList.add('active')}</script>
-</body></html>
+      <p>
+        A collection of my robotics learning projects, embedded-systems
+        experience, computer-vision experiments, and Python applications.
+        Professional industry experience is presented only at a
+        non-confidential, high level.
+      </p>
+    </section>
+
+    <!-- ROBOTICS PROJECTS -->
+    <section class="section">
+
+      <h2>🤖 Robotics & Autonomous Systems</h2>
+
+      <p class="section-note">
+        My ROS 2 and Gazebo learning path. Detailed documentation,
+        screenshots, simulation videos, and technical write-ups will be
+        added progressively.
+      </p>
+
+      <div class="grid">
+
+        <article class="card">
+          <span class="status">Completed in simulation</span>
+
+          <h3>Autonomous Mobile Robot Simulation</h3>
+
+          <p>
+            Developed a four-wheel mobile robot simulation using ROS 2 and
+            Gazebo. The project includes robot modeling, simulated sensors,
+            TF2, RViz2, and velocity control.
+          </p>
+
+          <div class="tags">
+            <span class="tag">ROS 2</span>
+            <span class="tag">Gazebo</span>
+            <span class="tag">RViz2</span>
+            <span class="tag">TF2</span>
+            <span class="tag">Robot Modeling</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="status">Implemented</span>
+
+          <h3>Robot State Estimation using EKF</h3>
+
+          <p>
+            Used IMU and wheel-odometry data with an Extended Kalman Filter
+            to estimate the mobile robot's position and orientation.
+          </p>
+
+          <div class="tags">
+            <span class="tag">EKF</span>
+            <span class="tag">IMU</span>
+            <span class="tag">Wheel Odometry</span>
+            <span class="tag">ROS 2</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="status">Implemented</span>
+
+          <h3>2D LiDAR SLAM</h3>
+
+          <p>
+            Generated and saved 2D occupancy-grid maps using LiDAR-based
+            Simultaneous Localization and Mapping with SLAM Toolbox.
+          </p>
+
+          <div class="tags">
+            <span class="tag">LiDAR</span>
+            <span class="tag">SLAM Toolbox</span>
+            <span class="tag">Occupancy Grid</span>
+            <span class="tag">Mapping</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="status">Implemented</span>
+
+          <h3>AMCL Localization</h3>
+
+          <p>
+            Localized the mobile robot on a previously generated map using
+            AMCL, a map server, LiDAR data, and the ROS 2 navigation
+            ecosystem.
+          </p>
+
+          <div class="tags">
+            <span class="tag">AMCL</span>
+            <span class="tag">Map Server</span>
+            <span class="tag">LiDAR</span>
+            <span class="tag">Localization</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="status progress">In progress</span>
+
+          <h3>Autonomous Navigation using Nav2</h3>
+
+          <p>
+            Developing point-to-point autonomous navigation using Nav2,
+            including path planning, controller behavior, and obstacle
+            avoidance.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Nav2</span>
+            <span class="tag">Path Planning</span>
+            <span class="tag">Obstacle Avoidance</span>
+            <span class="tag">AMCL</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- COMPUTER VISION PROJECTS -->
+    <section class="section">
+
+      <h2>🖼️ Computer Vision & Image Processing</h2>
+
+      <p class="section-note">
+        OpenCV and Python experiments from my computer-vision learning work.
+      </p>
+
+      <div class="tabs">
+
+        <button class="tab-button active"
+                onclick="showProject('ip1', this)">
+          Webcam
+        </button>
+
+        <button class="tab-button"
+                onclick="showProject('ip2', this)">
+          Grayscale & Blur
+        </button>
+
+        <button class="tab-button"
+                onclick="showProject('ip3', this)">
+          Canny Edge
+        </button>
+
+        <button class="tab-button"
+                onclick="showProject('ip4', this)">
+          Color Masking
+        </button>
+
+        <button class="tab-button"
+                onclick="showProject('ip5', this)">
+          Contours
+        </button>
+
+        <button class="tab-button"
+                onclick="showProject('ip6', this)">
+          Image Processing
+        </button>
+
+        <button class="tab-button"
+                onclick="showProject('ip7', this)">
+          Color Tracking
+        </button>
+
+        <button class="tab-button"
+                onclick="showProject('ip8', this)">
+          Decision Logic
+        </button>
+
+      </div>
+
+      <div id="ip1" class="project-content">
+        <div class="project-title">Webcam Basics</div>
+
+        <p class="project-desc">
+          Real-time video-frame reading using OpenCV.
+        </p>
+
+        <a class="btn"
+           href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/01_webcam_basics.py"
+           target="_blank">
+          GitHub
+        </a>
+
+        <a class="btn"
+           href="https://youtu.be/zE28FQhIUu4"
+           target="_blank">
+          Demo Video
+        </a>
+      </div>
+
+      <div id="ip2" class="project-content" style="display: none;">
+        <div class="project-title">Grayscale and Blurring</div>
+
+        <p class="project-desc">
+          Basic image preprocessing using grayscale conversion and blurring.
+        </p>
+
+        <a class="btn"
+           href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/02_Grayscale_Blurring.py"
+           target="_blank">
+          GitHub
+        </a>
+
+        <a class="btn"
+           href="https://youtu.be/35i23GERI1g"
+           target="_blank">
+          Demo Video
+        </a>
+      </div>
+
+      <div id="ip3" class="project-content" style="display: none;">
+        <div class="project-title">Canny Edge Detector</div>
+
+        <p class="project-desc">
+          Real-time edge detection on a video feed.
+        </p>
+
+        <a class="btn"
+           href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/03_Canny_Edge_Detector.py"
+           target="_blank">
+          GitHub
+        </a>
+
+        <a class="btn"
+           href="https://youtu.be/JuK82WOXZ_g"
+           target="_blank">
+          Demo Video
+        </a>
+      </div>
+
+      <div id="ip4" class="project-content" style="display: none;">
+        <div class="project-title">Color Masking</div>
+
+        <p class="project-desc">
+          Color masking and color-based detection using OpenCV and Python.
+        </p>
+
+        <a class="btn"
+           href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/04_Color_Masking.py"
+           target="_blank">
+          GitHub
+        </a>
+
+        <a class="btn"
+           href="https://youtu.be/Zu-iJX2OPug"
+           target="_blank">
+          Demo Video
+        </a>
+      </div>
+
+      <div id="ip5" class="project-content" style="display: none;">
+        <div class="project-title">Contour Detection</div>
+
+        <p class="project-desc">
+          Applied contours to color-detected objects.
+        </p>
+
+        <a class="btn"
+           href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/05_Contours_box%20.py"
+           target="_blank">
+          GitHub
+        </a>
+
+        <a class="btn"
+           href="https://youtu.be/EyhnmjwB6Lc"
+           target="_blank">
+          Demo Video
+        </a>
+      </div>
+
+      <div id="ip6" class="project-content" style="display: none;">
+        <div class="project-title">Image Processing</div>
+
+        <p class="project-desc">
+          Reading and processing images using OpenCV and Python.
+        </p>
+
+        <a class="btn"
+           href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/06_Image_process.py"
+           target="_blank">
+          GitHub
+        </a>
+
+        <a class="btn"
+           href="https://youtu.be/LBlkcWXnMqc"
+           target="_blank">
+          Demo Video
+        </a>
+      </div>
+
+      <div id="ip7" class="project-content" style="display: none;">
+        <div class="project-title">Color Tracking</div>
+
+        <p class="project-desc">
+          Detected and tracked a red object in a video stream.
+        </p>
+
+        <a class="btn"
+           href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/07_object_tracking.py"
+           target="_blank">
+          GitHub
+        </a>
+
+        <a class="btn"
+           href="https://youtu.be/DkNv3nIzuVw"
+           target="_blank">
+          Demo Video
+        </a>
+      </div>
+
+      <div id="ip8" class="project-content" style="display: none;">
+        <div class="project-title">Decision Logic</div>
+
+        <p class="project-desc">
+          Detected a red object and selected a direction using basic
+          computer-vision logic.
+        </p>
+
+        <a class="btn"
+           href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/08_decision_logic.py"
+           target="_blank">
+          GitHub
+        </a>
+
+        <a class="btn"
+           href="https://youtu.be/tPTrgkY8Sl4"
+           target="_blank">
+          Demo Video
+        </a>
+      </div>
+
+    </section>
+
+    <!-- PYTHON PROJECTS -->
+    <section class="section">
+
+      <h2>🐍 Python Projects</h2>
+
+      <div class="grid">
+
+        <article class="card">
+          <h3>Modbus-Terminal</h3>
+
+          <p>
+            Python terminal tool for analyzing Modbus slave data over TCP
+            or RTU connections.
+          </p>
+
+          <div class="links">
+            <a class="btn"
+               href="https://github.com/GaneshBhatkar/Modbus-Terminal"
+               target="_blank">
+              GitHub
+            </a>
+
+            <a class="btn"
+               href="https://youtu.be/q5H6agDDBCQ"
+               target="_blank">
+              Demo Video
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Calculator</h3>
+
+          <p>
+            A simple Python and Qt GUI-based calculator.
+          </p>
+
+          <div class="links">
+            <a class="btn"
+               href="https://github.com/GaneshBhatkar/Calculator"
+               target="_blank">
+              GitHub
+            </a>
+
+            <a class="btn"
+               href="https://youtube.com/shorts/fBaEg7bXjB8"
+               target="_blank">
+              Demo Video
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Currency Converter</h3>
+
+          <p>
+            A basic currency-conversion application developed using Python.
+          </p>
+
+          <div class="links">
+            <a class="btn"
+               href="https://github.com/GaneshBhatkar/Currency-Convertor_1"
+               target="_blank">
+              GitHub
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- INDUSTRY EXPERIENCE -->
+    <section class="section">
+
+      <h2>🔧 Embedded Systems & Industry Experience</h2>
+
+      <div class="notice">
+        These summaries describe my professional engineering experience at a
+        high level. Proprietary source code, schematics, machine
+        specifications, customer information, internal photographs, and
+        confidential implementation details are intentionally excluded.
+      </div>
+
+      <br>
+
+      <div class="grid">
+
+        <article class="card">
+          <h3>Industrial Machine-Control Firmware</h3>
+
+          <p>
+            Developing PIC32 firmware for an industrial machine-control
+            application, including machine sequencing, sensor monitoring,
+            actuator control, fault handling, and HMI communication.
+          </p>
+
+          <div class="tags">
+            <span class="tag">PIC32</span>
+            <span class="tag">Embedded C</span>
+            <span class="tag">MPLAB Harmony</span>
+            <span class="tag">Nextion HMI</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Medical Equipment Firmware</h3>
+
+          <p>
+            Developed and tested STM32 embedded firmware for medical
+            equipment applications, including peripheral communication,
+            hardware integration, debugging, and product-level testing.
+          </p>
+
+          <div class="tags">
+            <span class="tag">STM32</span>
+            <span class="tag">UART</span>
+            <span class="tag">SPI</span>
+            <span class="tag">I²C</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Industrial Automation Controllers</h3>
+
+          <p>
+            Worked on embedded firmware, DWIN HMI logic, controller
+            interfacing, Modbus communication, hardware integration, and
+            functional testing for industrial automation systems.
+          </p>
+
+          <div class="tags">
+            <span class="tag">STM32</span>
+            <span class="tag">AVR</span>
+            <span class="tag">DWIN HMI</span>
+            <span class="tag">Modbus</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © 2026 Ganesh Bhatkar |
+      <a href="mailto:gsbhatkar@gmail.com">
+        gsbhatkar@gmail.com
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    function showProject(id, button) {
+      document
+        .querySelectorAll(".project-content")
+        .forEach(function (element) {
+          element.style.display = "none";
+        });
+
+      document.getElementById(id).style.display = "block";
+
+      document
+        .querySelectorAll(".tab-button")
+        .forEach(function (btn) {
+          btn.classList.remove("active");
+        });
+
+      button.classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
