@@ -1,19 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style id="unified-robotics-theme">
-:root{--bg:#0b1220;--surface:#111c2e;--surface2:#17263b;--text:#e7edf5;--muted:#aab8ca;--accent:#58d5c9;--accent2:#8bb8ff;--border:#263852;}
-html,body{background:var(--bg)!important;color:var(--text)!important;}
-body{font-family:Inter,Segoe UI,Arial,sans-serif!important;}
-header,nav,.navbar,.site-header{background:var(--surface)!important;color:var(--text)!important;}
-main,section,article,.container,.content,.hero,.card,.project-card,.skill-card,.timeline-item,.research-card,.resume-container,.panel,.box{color:var(--text)!important;}
-.card,.project-card,.skill-card,.timeline-item,.research-card,.panel,.box,section article{background:var(--surface)!important;border-color:var(--border)!important;}
-h1,h2,h3,h4,h5,h6,strong{color:var(--text)!important;}
-p,li,small,.muted,.subtitle,.description{color:var(--muted)!important;}
-a{color:var(--accent2)!important;}
-a:hover{color:var(--accent)!important;}
-button,.btn,.button{background:var(--accent)!important;color:#08131e!important;border-color:var(--accent)!important;}
-button:hover,.btn:hover,.button:hover{background:var(--accent2)!important;color:#08131e!important;}
-footer{background:var(--surface)!important;color:var(--muted)!important;border-color:var(--border)!important;}
-hr{border-color:var(--border)!important;}
-code,pre{background:#08131e!important;color:var(--text)!important;border-color:var(--border)!important;}
-</style>
+  <title>ROS 2 Journey | Ganesh Bhatkar</title>
 
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111c2e;
+      --panel-light: #16243a;
+      --text: #e7edf5;
+      --muted: #a8b5c7;
+      --accent: #38bdf8;
+      --accent-light: #22d3ee;
+      --border: #263852;
+      --warning: #fbbf24;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0a1020;
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+    }
+
+    .navbar {
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .content {
+      max-width: 1150px;
+      margin: 45px auto;
+      padding: 0 22px;
+    }
+
+    .hero {
+      margin-bottom: 45px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin: 0 0 12px;
+    }
+
+    .hero p {
+      max-width: 850px;
+      color: var(--muted);
+    }
+
+    .section {
+      margin: 55px 0;
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+    }
+
+    .timeline {
+      position: relative;
+      margin-left: 15px;
+      padding-left: 30px;
+      border-left: 2px solid var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 23px;
+      margin-bottom: 25px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: var(--accent);
+      border: 4px solid var(--bg);
+      border-radius: 50%;
+      left: -40px;
+      top: 28px;
+    }
+
+    .timeline-item h3 {
+      color: var(--accent-light);
+      margin: 0 0 8px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    .status {
+      display: inline-block;
+      border: 1px solid #1d607b;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .status.progress {
+      color: var(--warning);
+      border-color: #795b1b;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .learning-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .learning-card h3 {
+      color: var(--accent-light);
+      margin-top: 0;
+    }
+
+    .learning-card ul {
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .notice {
+      background: var(--panel);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 18px;
+      color: var(--muted);
+    }
+
+    .next-step {
+      background: var(--panel-light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 25px;
+    }
+
+    .next-step h3 {
+      color: var(--accent-light);
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      background: #0a1020;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .timeline {
+        margin-left: 8px;
+        padding-left: 25px;
+      }
+
+      .timeline-item::before {
+        left: -35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">Ganesh Bhatkar</div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="ros-journey.html">ROS 2 Journey</a>
+        <a href="resume.html">Resume</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="content">
+
+    <section class="hero">
+      <h1>My ROS 2 Journey</h1>
+
+      <p>
+        This page documents my transition from embedded-systems development
+        toward robotics and autonomous systems engineering. My learning
+        focuses on ROS 2, robot simulation, state estimation, mapping,
+        localization, and autonomous navigation.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Learning Progression</h2>
+
+      <div class="timeline">
+
+        <article class="timeline-item">
+          <span class="status">Completed</span>
+
+          <h3>01. ROS 2 Foundations</h3>
+
+          <p>
+            Learned the basic ROS 2 architecture and developed Python-based
+            ROS 2 nodes for communication between robot components.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Nodes</span>
+            <span class="tag">Topics</span>
+            <span class="tag">Publishers</span>
+            <span class="tag">Subscribers</span>
+            <span class="tag">Services</span>
+            <span class="tag">Parameters</span>
+            <span class="tag">rclpy</span>
+            <span class="tag">colcon</span>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <span class="status">Completed</span>
+
+          <h3>02. Robot Simulation with Gazebo</h3>
+
+          <p>
+            Created and tested a four-wheel mobile robot simulation using
+            ROS 2 and Gazebo. Worked with robot models, simulated sensors,
+            velocity commands, and visualization in RViz2.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Gazebo</span>
+            <span class="tag">RViz2</span>
+            <span class="tag">URDF</span>
+            <span class="tag">TF2</span>
+            <span class="tag">cmd_vel</span>
+            <span class="tag">The Construct</span>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <span class="status">Completed</span>
+
+          <h3>03. Robot State Estimation</h3>
+
+          <p>
+            Studied robot pose estimation using wheel odometry and IMU
+            measurements. Implemented sensor fusion concepts using an
+            Extended Kalman Filter.
+          </p>
+
+          <div class="tags">
+            <span class="tag">IMU</span>
+            <span class="tag">Wheel Odometry</span>
+            <span class="tag">EKF</span>
+            <span class="tag">Pose Estimation</span>
+            <span class="tag">Sensor Fusion</span>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <span class="status">Completed</span>
+
+          <h3>04. 2D LiDAR SLAM</h3>
+
+          <p>
+            Used simulated LiDAR data with SLAM Toolbox to generate a
+            two-dimensional occupancy-grid map. The generated map was
+            saved for later localization.
+          </p>
+
+          <div class="tags">
+            <span class="tag">LiDAR</span>
+            <span class="tag">SLAM Toolbox</span>
+            <span class="tag">Occupancy Grid</span>
+            <span class="tag">Mapping</span>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <span class="status">Completed</span>
+
+          <h3>05. AMCL Localization</h3>
+
+          <p>
+            Localized the simulated mobile robot on a previously generated
+            map using the Map Server, AMCL, LiDAR data, and the ROS 2
+            transform system.
+          </p>
+
+          <div class="tags">
+            <span class="tag">AMCL</span>
+            <span class="tag">Map Server</span>
+            <span class="tag">LiDAR</span>
+            <span class="tag">TF2</span>
+            <span class="tag">Localization</span>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <span class="status progress">In progress</span>
+
+          <h3>06. Autonomous Navigation with Nav2</h3>
+
+          <p>
+            Developing autonomous point-to-point navigation using Nav2.
+            The current focus includes navigation configuration, path
+            planning, controller behavior, goal execution, and obstacle
+            avoidance.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Nav2</span>
+            <span class="tag">Path Planning</span>
+            <span class="tag">Controllers</span>
+            <span class="tag">Costmaps</span>
+            <span class="tag">Obstacle Avoidance</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Core Concepts Studied</h2>
+
+      <div class="learning-grid">
+
+        <article class="learning-card">
+          <h3>ROS 2 Communication</h3>
+
+          <ul>
+            <li>Nodes and executors</li>
+            <li>Topics and message types</li>
+            <li>Publishers and subscribers</li>
+            <li>Services and parameters</li>
+            <li>Python package structure</li>
+            <li>Workspace and package building</li>
+          </ul>
+        </article>
+
+        <article class="learning-card">
+          <h3>Robot Modeling</h3>
+
+          <ul>
+            <li>URDF robot description</li>
+            <li>Links and joints</li>
+            <li>Robot frames</li>
+            <li>TF2 transformations</li>
+            <li>Wheel and sensor placement</li>
+            <li>Gazebo simulation</li>
+          </ul>
+        </article>
+
+        <article class="learning-card">
+          <h3>Perception and Estimation</h3>
+
+          <ul>
+            <li>LiDAR data</li>
+            <li>IMU measurements</li>
+            <li>Wheel odometry</li>
+            <li>Sensor fusion</li>
+            <li>Extended Kalman Filter</li>
+            <li>Robot pose estimation</li>
+          </ul>
+        </article>
+
+        <article class="learning-card">
+          <h3>Navigation and Mapping</h3>
+
+          <ul>
+            <li>SLAM Toolbox</li>
+            <li>Occupancy-grid maps</li>
+            <li>Map Server</li>
+            <li>AMCL localization</li>
+            <li>Nav2 architecture</li>
+            <li>Path planning and obstacle avoidance</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Development Environment</h2>
+
+      <div class="notice">
+        My ROS 2 learning and simulation work is being developed using
+        <strong>ROS 2 Humble</strong>, <strong>Gazebo</strong>,
+        <strong>RViz2</strong>, <strong>The Construct</strong>, and
+        Python-based ROS 2 packages.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Next Learning Goals</h2>
+
+      <div class="next-step">
+        <h3>From Simulation to Robotics Applications</h3>
+
+        <p>
+          My next objectives are to complete the Nav2 navigation project,
+          document each robotics project with screenshots and simulation
+          videos, improve ROS 2 launch and configuration skills, and
+          gradually study the integration of real sensors and embedded
+          controllers with ROS 2.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Nav2 Completion</span>
+          <span class="tag">Project Documentation</span>
+          <span class="tag">ROS 2 Launch Files</span>
+          <span class="tag">Sensor Integration</span>
+          <span class="tag">Embedded-Robotics Integration</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © 2026 Ganesh Bhatkar |
+      <a href="mailto:gsbhatkar@gmail.com">
+        gsbhatkar@gmail.com
+      </a>
+    </p>
+  </footer>
+
+</body>
+</html>
