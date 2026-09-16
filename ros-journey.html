@@ -234,6 +234,94 @@
       }
     }
   </style>
+<style id="final-unified-theme">
+/* Final unified font and color theme — content and layout preserved */
+:root {
+  --bg: #0b1220 !important;
+  --panel: #111c2e !important;
+  --panel-light: #17263b !important;
+  --text: #e7edf5 !important;
+  --muted: #aab8ca !important;
+  --accent: #58d5c9 !important;
+  --accent-2: #8bb8ff !important;
+  --border: rgba(255,255,255,.12) !important;
+}
+html, body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: "Segoe UI", Arial, sans-serif !important;
+}
+body, body * {
+  font-family: "Segoe UI", Arial, sans-serif !important;
+}
+body {
+  background-image: none !important;
+}
+header, nav, .navbar, .nav-container, .site-header {
+  background: rgba(11,18,32,.96) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+.logo, .logo a { color: var(--text) !important; }
+.logo span { color: var(--accent) !important; }
+.nav-links a, nav a { color: var(--muted) !important; }
+.nav-links a:hover, nav a:hover, .nav-links a.active, nav a.active { color: var(--accent) !important; }
+main, .content, .container, .page-header, .intro, .hero, section {
+  color: var(--text) !important;
+}
+.hero, .page-header {
+  background: var(--bg) !important;
+}
+h1, h2, h3, h4, h5, h6, strong { color: var(--text) !important; }
+p, li, small, label, td, .muted, .subtitle, .description, .section-note { color: var(--muted) !important; }
+a { color: var(--accent-2) !important; }
+a:hover { color: var(--accent) !important; }
+.card, .project-card, .skill-card, .research-card, .timeline-item, .panel, .box,
+article, .resume-container, .pdf-container, .info-card, .timeline-card {
+  background: var(--panel) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+.card h3, .project-card h3, .skill-card h3, .research-card h3,
+.timeline-item h3, .info-card h3, .section h2, .eyebrow {
+  color: var(--accent) !important;
+}
+button, .btn, .button, a.button {
+  background: var(--accent) !important;
+  color: #07131d !important;
+  border-color: var(--accent) !important;
+}
+button:hover, .btn:hover, .button:hover, a.button:hover {
+  background: var(--accent-2) !important;
+  color: #07131d !important;
+  border-color: var(--accent-2) !important;
+}
+.tag, .badge, .status, .label, .tech-tag, .skill-tag {
+  background: rgba(88,213,201,.10) !important;
+  color: var(--accent) !important;
+  border-color: rgba(88,213,201,.35) !important;
+}
+hr, .section h2 { border-color: var(--border) !important; }
+pre, code {
+  background: #080e18 !important;
+  color: var(--accent-2) !important;
+  border-color: var(--border) !important;
+}
+table { background: var(--panel) !important; color: var(--muted) !important; }
+th { background: var(--panel-light) !important; color: var(--accent) !important; }
+input, textarea, select {
+  background: var(--panel) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+footer {
+  background: #080e18 !important;
+  color: var(--muted) !important;
+  border-color: var(--border) !important;
+}
+footer p, footer a { color: var(--muted) !important; }
+footer a:hover { color: var(--accent) !important; }
+</style>
 </head>
 
 <body>
