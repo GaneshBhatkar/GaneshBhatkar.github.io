@@ -1,12 +1,19 @@
+<!-- Complete projects.html update based on your original file.
+     Original content/sequence preserved; Robotics, Computer Vision,
+     and Python now use the same Heading → Description → Projects
+     dropdown tree structure. -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Projects | Ganesh Bhatkar</title>
 
   <style>
+
     :root {
       --bg: #0b1220;
       --panel: #111c2e;
@@ -15,7 +22,7 @@
       --muted: #aab8ca;
       --accent: #58d5c9;
       --accent-2: #8bb8ff;
-      --border: rgba(255, 255, 255, 0.12);
+      --border: rgba(255,255,255,0.12);
       --warning: #fbbf24;
     }
 
@@ -40,21 +47,21 @@
     }
 
     /* ==================================================
-       HEADER — SAME AS INDEX.HTML
+       HEADER
        ================================================== */
 
     header {
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(11, 18, 32, 0.94);
+      background: rgba(11,18,32,0.94);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(12px);
     }
 
     .navbar {
       min-height: 76px;
-      width: min(1120px, 92%);
+      width: min(1120px,92%);
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -67,6 +74,7 @@
       font-weight: 700;
       letter-spacing: 0.3px;
       color: var(--text);
+      text-decoration: none;
     }
 
     .logo span {
@@ -87,7 +95,8 @@
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: var(--accent);
     }
 
@@ -96,7 +105,7 @@
        ================================================== */
 
     .content {
-      width: min(1120px, 92%);
+      width: min(1120px,92%);
       margin: 0 auto;
       padding: 80px 0;
     }
@@ -106,7 +115,7 @@
     }
 
     .intro h1 {
-      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-size: clamp(2.4rem,5vw,4rem);
       line-height: 1.1;
       margin: 0 0 18px;
       letter-spacing: -1px;
@@ -126,66 +135,154 @@
       font-size: 1.8rem;
       border-bottom: 1px solid var(--border);
       padding-bottom: 12px;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       color: var(--accent);
     }
 
     .section-note {
       color: var(--muted);
-      margin-bottom: 25px;
       max-width: 900px;
+      margin-bottom: 25px;
     }
 
     /* ==================================================
-       CARDS
+       COMMON TREE
        ================================================== */
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--panel);
+    .tree {
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 23px;
-      display: flex;
-      flex-direction: column;
+      background: var(--panel);
+      overflow: hidden;
     }
 
-    .card h3 {
-      margin: 0 0 8px;
+    .tree > details > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 22px;
+      font-size: 1.12rem;
+      font-weight: 700;
+      background: var(--panel-light);
+      transition: background 0.2s ease;
+    }
+
+    .tree > details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .tree > details > summary::before {
+      content: "▶";
+      display: inline-block;
+      margin-right: 12px;
       color: var(--accent);
-      font-size: 1.2rem;
+      font-size: 0.7rem;
+      transition: transform 0.2s ease;
     }
 
-    .card p {
+    .tree > details[open] > summary::before {
+      transform: rotate(90deg);
+    }
+
+    .tree > details > summary:hover {
+      background: #1c3049;
+    }
+
+    .tree-description {
+      padding: 18px 22px;
       color: var(--muted);
-      margin: 8px 0 15px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tree-items {
+      padding: 14px 20px 20px 34px;
+    }
+
+    .tree-item {
+      position: relative;
+      padding-left: 25px;
+      border-left: 1px solid var(--border);
+    }
+
+    .tree-item:last-child {
+      border-left-color: transparent;
+    }
+
+    .tree-item::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: 29px;
+      width: 20px;
+      border-top: 1px solid var(--border);
     }
 
     /* ==================================================
-       STATUS
+       PROJECT DROPDOWN
        ================================================== */
 
-    .status {
-      display: inline-block;
-      width: max-content;
-      font-size: 0.78rem;
-      border: 1px solid rgba(88, 213, 201, 0.35);
-      background: rgba(88, 213, 201, 0.10);
-      border-radius: 20px;
-      padding: 3px 9px;
-      margin-bottom: 12px;
-      color: var(--accent);
+    .project-node {
+      margin: 10px 0;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--panel-light);
+      overflow: hidden;
     }
 
-    .status.progress {
-      color: var(--warning);
-      border-color: rgba(251, 191, 36, 0.35);
-      background: rgba(251, 191, 36, 0.08);
+    .project-node > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 15px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .project-node > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .project-node > summary:hover {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .project-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .project-arrow {
+      color: var(--accent);
+      font-size: 0.65rem;
+      transition: transform 0.2s ease;
+    }
+
+    .project-node[open] .project-arrow {
+      transform: rotate(90deg);
+    }
+
+    .project-status {
+      font-size: 0.75rem;
+      border: 1px solid rgba(88,213,201,0.35);
+      background: rgba(88,213,201,0.10);
+      border-radius: 20px;
+      padding: 3px 9px;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .project-body {
+      padding: 18px 22px 22px 43px;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-body p {
+      color: var(--muted);
+      margin: 8px 0 15px;
     }
 
     /* ==================================================
@@ -196,21 +293,20 @@
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
-      margin-top: auto;
-      padding-top: 10px;
+      margin-top: 14px;
     }
 
     .tag {
       font-size: 0.78rem;
-      border: 1px solid rgba(88, 213, 201, 0.35);
-      background: rgba(88, 213, 201, 0.10);
+      border: 1px solid rgba(88,213,201,0.35);
+      background: rgba(88,213,201,0.10);
       border-radius: 20px;
       padding: 3px 9px;
       color: var(--accent);
     }
 
     /* ==================================================
-       BUTTONS
+       LINKS
        ================================================== */
 
     .links {
@@ -234,52 +330,6 @@
     .btn:hover {
       background: var(--accent-2);
       border-color: var(--accent-2);
-      color: #07131d;
-    }
-
-    /* ==================================================
-       COMPUTER VISION TABS
-       ================================================== */
-
-    .tabs {
-      display: flex;
-      gap: 9px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
-    .tab-button {
-      background: var(--panel-light);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 9px 13px;
-      border-radius: 7px;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .tab-button.active,
-    .tab-button:hover {
-      background: var(--accent);
-      color: #07131d;
-      border-color: var(--accent);
-    }
-
-    .project-content {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 22px;
-    }
-
-    .project-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .project-desc {
-      color: var(--muted);
     }
 
     /* ==================================================
@@ -292,6 +342,7 @@
       padding: 15px 18px;
       color: var(--muted);
       border-radius: 6px;
+      margin-bottom: 25px;
     }
 
     /* ==================================================
@@ -319,7 +370,7 @@
        MOBILE
        ================================================== */
 
-    @media (max-width: 700px) {
+    @media (max-width:700px) {
 
       .navbar {
         align-items: flex-start;
@@ -337,12 +388,28 @@
       .intro h1 {
         font-size: 2.4rem;
       }
+
+      .tree-items {
+        padding-left: 18px;
+      }
+
+      .project-body {
+        padding-left: 25px;
+      }
+
+      .project-status {
+        display: none;
+      }
+
     }
+
   </style>
 
 </head>
 
+
 <body>
+
 
   <!-- ==================================================
        HEADER
@@ -352,9 +419,9 @@
 
     <nav class="navbar">
 
-      <div class="logo">
+      <a href="index.html" class="logo">
         Ganesh <span>Bhatkar</span>
-      </div>
+      </a>
 
       <div class="nav-links">
 
@@ -366,7 +433,7 @@
           Skills
         </a>
 
-        <a href="projects.html">
+        <a href="projects.html" class="active">
           Projects
         </a>
 
@@ -417,7 +484,7 @@
 
 
     <!-- ==================================================
-         ROBOTICS PROJECTS
+         ROBOTICS
          ================================================== -->
 
     <section class="section">
@@ -432,241 +499,336 @@
         and autonomous navigation.
       </p>
 
-      <div class="grid">
+
+      <div class="tree">
+
+        <details open>
+
+          <summary>
+            Projects
+          </summary>
 
 
-        <!-- AUTONOMOUS MOBILE ROBOT -->
+          <div class="tree-description">
+            Expand each project to view the project summary,
+            technologies used, and detailed-project page.
+          </div>
 
-        <article class="card">
 
-          <span class="status">
-            Completed in simulation
-          </span>
+          <div class="tree-items">
 
-          <h3>
-            Autonomous Mobile Robot Simulation
-          </h3>
 
-          <p>
-            Developed a four-wheel mobile robot simulation using ROS 2
-            and Gazebo. The project includes robot modeling, simulated
-            sensors, TF2, RViz2, odometry, and velocity control.
-          </p>
+            <!-- 1. AUTONOMOUS MOBILE ROBOT -->
 
-          <div class="tags">
+            <div class="tree-item">
 
-            <span class="tag">
-              ROS 2
-            </span>
+              <details class="project-node">
 
-            <span class="tag">
-              Gazebo
-            </span>
+                <summary>
 
-            <span class="tag">
-              RViz2
-            </span>
+                  <span class="project-name">
 
-            <span class="tag">
-              TF2
-            </span>
+                    <span class="project-arrow">▶</span>
 
-            <span class="tag">
-              Robot Modeling
-            </span>
+                    Autonomous Mobile Robot Simulation
+
+                  </span>
+
+                  <span class="project-status">
+                    Completed in simulation
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Developed a four-wheel mobile robot simulation using ROS 2
+                    and Gazebo. The project includes robot modeling, simulated
+                    sensors, TF2, RViz2, odometry, and velocity control.
+                  </p>
+
+
+                  <div class="tags">
+
+                    <span class="tag">ROS 2</span>
+                    <span class="tag">Gazebo</span>
+                    <span class="tag">RViz2</span>
+                    <span class="tag">TF2</span>
+                    <span class="tag">Robot Modeling</span>
+
+                  </div>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="robot-simulation.html">
+                      View Detailed Project →
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 2. EKF -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Robot State Estimation using EKF
+
+                  </span>
+
+                  <span class="project-status">
+                    Implemented
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Used IMU and wheel-odometry data with an Extended Kalman
+                    Filter to estimate the mobile robot's position and
+                    orientation.
+                  </p>
+
+
+                  <div class="tags">
+
+                    <span class="tag">EKF</span>
+                    <span class="tag">IMU</span>
+                    <span class="tag">Wheel Odometry</span>
+                    <span class="tag">ROS 2</span>
+
+                  </div>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="robot-state-estimation.html">
+                      View Detailed Project →
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 3. SLAM -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    2D LiDAR SLAM
+
+                  </span>
+
+                  <span class="project-status">
+                    Implemented
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Generated and saved 2D occupancy-grid maps using
+                    LiDAR-based Simultaneous Localization and Mapping
+                    with SLAM Toolbox.
+                  </p>
+
+
+                  <div class="tags">
+
+                    <span class="tag">LiDAR</span>
+                    <span class="tag">SLAM Toolbox</span>
+                    <span class="tag">Occupancy Grid</span>
+                    <span class="tag">Mapping</span>
+
+                  </div>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="lidar-slam.html">
+                      View Detailed Project →
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 4. AMCL -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    AMCL Localization
+
+                  </span>
+
+                  <span class="project-status">
+                    Implemented
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Localized the mobile robot on a previously generated map
+                    using AMCL, a map server, LiDAR data, odometry, and the
+                    ROS 2 navigation ecosystem.
+                  </p>
+
+
+                  <div class="tags">
+
+                    <span class="tag">AMCL</span>
+                    <span class="tag">Map Server</span>
+                    <span class="tag">LiDAR</span>
+                    <span class="tag">Localization</span>
+
+                  </div>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="amcl-localization.html">
+                      View Detailed Project →
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 5. NAV2 -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Autonomous Navigation using Nav2
+
+                  </span>
+
+                  <span class="project-status">
+                    Completed
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Implemented and validated point-to-point autonomous
+                    navigation using ROS 2 Nav2. The system combines
+                    global planning, local costmaps, DWB local control,
+                    AMCL localization, LiDAR sensing, and velocity control.
+                  </p>
+
+                  <p>
+                    Navigation was tested between multiple goal locations,
+                    including environments containing obstacles and
+                    constrained spaces. The robot successfully avoided
+                    obstacles while maintaining safe clearance.
+                  </p>
+
+
+                  <div class="tags">
+
+                    <span class="tag">Nav2</span>
+                    <span class="tag">DWB</span>
+                    <span class="tag">Path Planning</span>
+                    <span class="tag">Local Costmap</span>
+                    <span class="tag">Global Costmap</span>
+                    <span class="tag">AMCL</span>
+                    <span class="tag">LiDAR</span>
+                    <span class="tag">Obstacle Avoidance</span>
+
+                  </div>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="autonomous-navigation.html">
+                      View Detailed Project →
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
 
           </div>
 
-        </article>
-
-
-        <!-- EKF -->
-
-        <article class="card">
-
-          <span class="status">
-            Implemented
-          </span>
-
-          <h3>
-            Robot State Estimation using EKF
-          </h3>
-
-          <p>
-            Used IMU and wheel-odometry data with an Extended Kalman
-            Filter to estimate the mobile robot's position and
-            orientation.
-          </p>
-
-          <div class="tags">
-
-            <span class="tag">
-              EKF
-            </span>
-
-            <span class="tag">
-              IMU
-            </span>
-
-            <span class="tag">
-              Wheel Odometry
-            </span>
-
-            <span class="tag">
-              ROS 2
-            </span>
-
-          </div>
-
-        </article>
-
-
-        <!-- SLAM -->
-
-        <article class="card">
-
-          <span class="status">
-            Implemented
-          </span>
-
-          <h3>
-            2D LiDAR SLAM
-          </h3>
-
-          <p>
-            Generated and saved 2D occupancy-grid maps using
-            LiDAR-based Simultaneous Localization and Mapping
-            with SLAM Toolbox.
-          </p>
-
-          <div class="tags">
-
-            <span class="tag">
-              LiDAR
-            </span>
-
-            <span class="tag">
-              SLAM Toolbox
-            </span>
-
-            <span class="tag">
-              Occupancy Grid
-            </span>
-
-            <span class="tag">
-              Mapping
-            </span>
-
-          </div>
-
-        </article>
-
-
-        <!-- AMCL -->
-
-        <article class="card">
-
-          <span class="status">
-            Implemented
-          </span>
-
-          <h3>
-            AMCL Localization
-          </h3>
-
-          <p>
-            Localized the mobile robot on a previously generated map
-            using AMCL, a map server, LiDAR data, odometry, and the
-            ROS 2 navigation ecosystem.
-          </p>
-
-          <div class="tags">
-
-            <span class="tag">
-              AMCL
-            </span>
-
-            <span class="tag">
-              Map Server
-            </span>
-
-            <span class="tag">
-              LiDAR
-            </span>
-
-            <span class="tag">
-              Localization
-            </span>
-
-          </div>
-
-        </article>
-
-
-        <!-- NAV2 -->
-
-        <article class="card">
-
-          <span class="status">
-            Completed
-          </span>
-
-          <h3>
-            Autonomous Navigation using Nav2
-          </h3>
-
-          <p>
-            Implemented and validated point-to-point autonomous
-            navigation using ROS 2 Nav2. The system combines
-            global planning, local costmaps, DWB local control,
-            AMCL localization, LiDAR sensing, and velocity control.
-          </p>
-
-          <p>
-            Navigation was tested between multiple goal locations,
-            including environments containing obstacles and
-            constrained spaces. The robot successfully avoided
-            obstacles while maintaining safe clearance.
-          </p>
-
-          <div class="tags">
-
-            <span class="tag">
-              Nav2
-            </span>
-
-            <span class="tag">
-              DWB
-            </span>
-
-            <span class="tag">
-              Path Planning
-            </span>
-
-            <span class="tag">
-              Local Costmap
-            </span>
-
-            <span class="tag">
-              Global Costmap
-            </span>
-
-            <span class="tag">
-              AMCL
-            </span>
-
-            <span class="tag">
-              LiDAR
-            </span>
-
-            <span class="tag">
-              Obstacle Avoidance
-            </span>
-
-          </div>
-
-        </article>
-
+        </details>
 
       </div>
 
@@ -688,311 +850,438 @@
       </p>
 
 
-      <div class="tabs">
-
-        <button
-          class="tab-button active"
-          onclick="showProject('ip1', this)">
-          Webcam
-        </button>
-
-        <button
-          class="tab-button"
-          onclick="showProject('ip2', this)">
-          Grayscale & Blur
-        </button>
-
-        <button
-          class="tab-button"
-          onclick="showProject('ip3', this)">
-          Canny Edge
-        </button>
-
-        <button
-          class="tab-button"
-          onclick="showProject('ip4', this)">
-          Color Masking
-        </button>
-
-        <button
-          class="tab-button"
-          onclick="showProject('ip5', this)">
-          Contours
-        </button>
-
-        <button
-          class="tab-button"
-          onclick="showProject('ip6', this)">
-          Image Processing
-        </button>
-
-        <button
-          class="tab-button"
-          onclick="showProject('ip7', this)">
-          Color Tracking
-        </button>
-
-        <button
-          class="tab-button"
-          onclick="showProject('ip8', this)">
-          Decision Logic
-        </button>
-
-      </div>
-
-
-      <!-- WEBCAM -->
-
-      <div id="ip1" class="project-content">
-
-        <div class="project-title">
-          Webcam Basics
-        </div>
-
-        <p class="project-desc">
-          Real-time video-frame reading using OpenCV.
-        </p>
-
-        <a
-          class="btn"
-          href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/01_webcam_basics.py"
-          target="_blank">
-          GitHub
-        </a>
-
-        <a
-          class="btn"
-          href="https://youtu.be/zE28FQhIUu4"
-          target="_blank">
-          Demo Video
-        </a>
-
-      </div>
-
-
-      <!-- GRAYSCALE -->
-
-      <div
-        id="ip2"
-        class="project-content"
-        style="display: none;">
-
-        <div class="project-title">
-          Grayscale and Blurring
-        </div>
-
-        <p class="project-desc">
-          Basic image preprocessing using grayscale conversion
-          and blurring.
-        </p>
-
-        <a
-          class="btn"
-          href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/02_Grayscale_Blurring.py"
-          target="_blank">
-          GitHub
-        </a>
-
-        <a
-          class="btn"
-          href="https://youtu.be/35i23GERI1g"
-          target="_blank">
-          Demo Video
-        </a>
-
-      </div>
-
+      <div class="tree">
 
-      <!-- CANNY -->
+        <details open>
 
-      <div
-        id="ip3"
-        class="project-content"
-        style="display: none;">
-
-        <div class="project-title">
-          Canny Edge Detector
-        </div>
-
-        <p class="project-desc">
-          Real-time edge detection on a video feed.
-        </p>
-
-        <a
-          class="btn"
-          href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/03_Canny_Edge_Detector.py"
-          target="_blank">
-          GitHub
-        </a>
-
-        <a
-          class="btn"
-          href="https://youtu.be/JuK82WOXZ_g"
-          target="_blank">
-          Demo Video
-        </a>
-
-      </div>
-
+          <summary>
+            Projects
+          </summary>
 
-      <!-- COLOR MASKING -->
 
-      <div
-        id="ip4"
-        class="project-content"
-        style="display: none;">
-
-        <div class="project-title">
-          Color Masking
-        </div>
-
-        <p class="project-desc">
-          Color masking and color-based detection using OpenCV
-          and Python.
-        </p>
-
-        <a
-          class="btn"
-          href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/04_Color_Masking.py"
-          target="_blank">
-          GitHub
-        </a>
-
-        <a
-          class="btn"
-          href="https://youtu.be/Zu-iJX2OPug"
-          target="_blank">
-          Demo Video
-        </a>
+          <div class="tree-description">
+            Expand each project to view the project description,
+            source code, and demonstration video.
+          </div>
 
-      </div>
 
+          <div class="tree-items">
 
-      <!-- CONTOURS -->
-
-      <div
-        id="ip5"
-        class="project-content"
-        style="display: none;">
-
-        <div class="project-title">
-          Contour Detection
-        </div>
-
-        <p class="project-desc">
-          Applied contours to color-detected objects.
-        </p>
-
-        <a
-          class="btn"
-          href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/05_Contours_box%20.py"
-          target="_blank">
-          GitHub
-        </a>
-
-        <a
-          class="btn"
-          href="https://youtu.be/EyhnmjwB6Lc"
-          target="_blank">
-          Demo Video
-        </a>
-
-      </div>
-
-
-      <!-- IMAGE PROCESSING -->
-
-      <div
-        id="ip6"
-        class="project-content"
-        style="display: none;">
-
-        <div class="project-title">
-          Image Processing
-        </div>
-
-        <p class="project-desc">
-          Reading and processing images using OpenCV and Python.
-        </p>
-
-        <a
-          class="btn"
-          href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/06_Image_process.py"
-          target="_blank">
-          GitHub
-        </a>
-
-        <a
-          class="btn"
-          href="https://youtu.be/LBlkcWXnMqc"
-          target="_blank">
-          Demo Video
-        </a>
-
-      </div>
-
-
-      <!-- COLOR TRACKING -->
-
-      <div
-        id="ip7"
-        class="project-content"
-        style="display: none;">
-
-        <div class="project-title">
-          Color Tracking
-        </div>
-
-        <p class="project-desc">
-          Detected and tracked a red object in a video stream.
-        </p>
-
-        <a
-          class="btn"
-          href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/07_object_tracking.py"
-          target="_blank">
-          GitHub
-        </a>
-
-        <a
-          class="btn"
-          href="https://youtu.be/DkNv3nIzuVw"
-          target="_blank">
-          Demo Video
-        </a>
-
-      </div>
-
-
-      <!-- DECISION LOGIC -->
-
-      <div
-        id="ip8"
-        class="project-content"
-        style="display: none;">
-
-        <div class="project-title">
-          Decision Logic
-        </div>
-
-        <p class="project-desc">
-          Detected a red object and selected a direction using
-          basic computer-vision logic.
-        </p>
-
-        <a
-          class="btn"
-          href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/08_decision_logic.py"
-          target="_blank">
-          GitHub
-        </a>
-
-        <a
-          class="btn"
-          href="https://youtu.be/tPTrgkY8Sl4"
-          target="_blank">
-          Demo Video
-        </a>
+
+            <!-- 1. WEBCAM -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Webcam Basics
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Real-time video-frame reading using OpenCV.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/01_webcam_basics.py"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                    <a
+                      class="btn"
+                      href="https://youtu.be/zE28FQhIUu4"
+                      target="_blank">
+                      Demo Video
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 2. GRAYSCALE -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Grayscale and Blurring
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Basic image preprocessing using grayscale conversion
+                    and blurring.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/02_Grayscale_Blurring.py"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                    <a
+                      class="btn"
+                      href="https://youtu.be/35i23GERI1g"
+                      target="_blank">
+                      Demo Video
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 3. CANNY -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Canny Edge Detector
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Real-time edge detection on a video feed.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/03_Canny_Edge_Detector.py"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                    <a
+                      class="btn"
+                      href="https://youtu.be/JuK82WOXZ_g"
+                      target="_blank">
+                      Demo Video
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 4. COLOR MASKING -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Color Masking
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Color masking and color-based detection using OpenCV
+                    and Python.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/04_Color_Masking.py"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                    <a
+                      class="btn"
+                      href="https://youtu.be/Zu-iJX2OPug"
+                      target="_blank">
+                      Demo Video
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 5. CONTOURS -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Contour Detection
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Applied contours to color-detected objects.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/05_Contours_box%20.py"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                    <a
+                      class="btn"
+                      href="https://youtu.be/EyhnmjwB6Lc"
+                      target="_blank">
+                      Demo Video
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 6. IMAGE PROCESSING -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Image Processing
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Reading and processing images using OpenCV and Python.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/06_Image_process.py"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                    <a
+                      class="btn"
+                      href="https://youtu.be/LBlkcWXnMqc"
+                      target="_blank">
+                      Demo Video
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 7. COLOR TRACKING -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Color Tracking
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Detected and tracked a red object in a video stream.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/07_object_tracking.py"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                    <a
+                      class="btn"
+                      href="https://youtu.be/DkNv3nIzuVw"
+                      target="_blank">
+                      Demo Video
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 8. DECISION LOGIC -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Decision Logic
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Detected a red object and selected a direction using
+                    basic computer-vision logic.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Perception_Basics/blob/main/08_decision_logic.py"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                    <a
+                      class="btn"
+                      href="https://youtu.be/tPTrgkY8Sl4"
+                      target="_blank">
+                      Demo Video
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+          </div>
+
+        </details>
 
       </div>
 
@@ -1009,96 +1298,181 @@
         🐍 Python Projects
       </h2>
 
-      <div class="grid">
+      <p class="section-note">
+        Python applications and utilities developed as part of my
+        programming and software-development practice.
+      </p>
 
 
-        <article class="card">
+      <div class="tree">
 
-          <h3>
-            Modbus-Terminal
-          </h3>
+        <details open>
 
-          <p>
-            Python terminal tool for analyzing Modbus slave data
-            over TCP or RTU connections.
-          </p>
+          <summary>
+            Projects
+          </summary>
 
-          <div class="links">
 
-            <a
-              class="btn"
-              href="https://github.com/GaneshBhatkar/Modbus-Terminal"
-              target="_blank">
-              GitHub
-            </a>
+          <div class="tree-description">
+            Expand each project to view the project description,
+            source code, and demonstration video.
+          </div>
 
-            <a
-              class="btn"
-              href="https://youtu.be/q5H6agDDBCQ"
-              target="_blank">
-              Demo Video
-            </a>
+
+          <div class="tree-items">
+
+
+            <!-- 1. MODBUS -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Modbus-Terminal
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Python terminal tool for analyzing Modbus slave data
+                    over TCP or RTU connections.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Modbus-Terminal"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                    <a
+                      class="btn"
+                      href="https://youtu.be/q5H6agDDBCQ"
+                      target="_blank">
+                      Demo Video
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 2. CALCULATOR -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Calculator
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    A simple Python and Qt GUI-based calculator.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Calculator"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                    <a
+                      class="btn"
+                      href="https://youtube.com/shorts/fBaEg7bXjB8"
+                      target="_blank">
+                      Demo Video
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- 3. CURRENCY CONVERTER -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Currency Converter
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    A basic currency-conversion application developed
+                    using Python.
+                  </p>
+
+
+                  <div class="links">
+
+                    <a
+                      class="btn"
+                      href="https://github.com/GaneshBhatkar/Currency-Convertor_1"
+                      target="_blank">
+                      GitHub
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
 
           </div>
 
-        </article>
-
-
-        <article class="card">
-
-          <h3>
-            Calculator
-          </h3>
-
-          <p>
-            A simple Python and Qt GUI-based calculator.
-          </p>
-
-          <div class="links">
-
-            <a
-              class="btn"
-              href="https://github.com/GaneshBhatkar/Calculator"
-              target="_blank">
-              GitHub
-            </a>
-
-            <a
-              class="btn"
-              href="https://youtube.com/shorts/fBaEg7bXjB8"
-              target="_blank">
-              Demo Video
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <article class="card">
-
-          <h3>
-            Currency Converter
-          </h3>
-
-          <p>
-            A basic currency-conversion application developed
-            using Python.
-          </p>
-
-          <div class="links">
-
-            <a
-              class="btn"
-              href="https://github.com/GaneshBhatkar/Currency-Convertor_1"
-              target="_blank">
-              GitHub
-            </a>
-
-          </div>
-
-        </article>
-
+        </details>
 
       </div>
 
@@ -1106,7 +1480,7 @@
 
 
     <!-- ==================================================
-         EMBEDDED SYSTEMS
+         EMBEDDED SYSTEMS & INDUSTRY EXPERIENCE
          ================================================== -->
 
     <section class="section">
@@ -1114,6 +1488,7 @@
       <h2>
         🔧 Embedded Systems & Industry Experience
       </h2>
+
 
       <div class="notice">
 
@@ -1125,115 +1500,157 @@
 
       </div>
 
-      <br>
 
-      <div class="grid">
+      <div class="tree">
+
+        <details open>
+
+          <summary>
+            Experience
+          </summary>
 
 
-        <article class="card">
+          <div class="tree-items">
 
-          <h3>
-            Industrial Machine-Control Firmware
-          </h3>
 
-          <p>
-            Developing PIC32 firmware for an industrial machine-control
-            application, including machine sequencing, sensor monitoring,
-            actuator control, fault handling, and HMI communication.
-          </p>
+            <!-- INDUSTRIAL MACHINE CONTROL -->
 
-          <div class="tags">
+            <div class="tree-item">
 
-            <span class="tag">
-              PIC32
-            </span>
+              <details class="project-node">
 
-            <span class="tag">
-              Embedded C
-            </span>
+                <summary>
 
-            <span class="tag">
-              MPLAB Harmony
-            </span>
+                  <span class="project-name">
 
-            <span class="tag">
-              Nextion HMI
-            </span>
+                    <span class="project-arrow">▶</span>
+
+                    Industrial Machine-Control Firmware
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Developing PIC32 firmware for an industrial
+                    machine-control application, including machine
+                    sequencing, sensor monitoring, actuator control,
+                    fault handling, and HMI communication.
+                  </p>
+
+
+                  <div class="tags">
+
+                    <span class="tag">PIC32</span>
+                    <span class="tag">Embedded C</span>
+                    <span class="tag">MPLAB Harmony</span>
+                    <span class="tag">Nextion HMI</span>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- MEDICAL EQUIPMENT -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Medical Equipment Firmware
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Developed and tested STM32 embedded firmware for
+                    medical equipment applications, including peripheral
+                    communication, hardware integration, debugging,
+                    and product-level testing.
+                  </p>
+
+
+                  <div class="tags">
+
+                    <span class="tag">STM32</span>
+                    <span class="tag">UART</span>
+                    <span class="tag">SPI</span>
+                    <span class="tag">I²C</span>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
+
+            <!-- INDUSTRIAL AUTOMATION -->
+
+            <div class="tree-item">
+
+              <details class="project-node">
+
+                <summary>
+
+                  <span class="project-name">
+
+                    <span class="project-arrow">▶</span>
+
+                    Industrial Automation Controllers
+
+                  </span>
+
+                </summary>
+
+
+                <div class="project-body">
+
+                  <p>
+                    Worked on embedded firmware, DWIN HMI logic,
+                    controller interfacing, Modbus communication,
+                    hardware integration, and functional testing
+                    for industrial automation systems.
+                  </p>
+
+
+                  <div class="tags">
+
+                    <span class="tag">STM32</span>
+                    <span class="tag">AVR</span>
+                    <span class="tag">DWIN HMI</span>
+                    <span class="tag">Modbus</span>
+
+                  </div>
+
+                </div>
+
+              </details>
+
+            </div>
+
 
           </div>
 
-        </article>
-
-
-        <article class="card">
-
-          <h3>
-            Medical Equipment Firmware
-          </h3>
-
-          <p>
-            Developed and tested STM32 embedded firmware for medical
-            equipment applications, including peripheral communication,
-            hardware integration, debugging, and product-level testing.
-          </p>
-
-          <div class="tags">
-
-            <span class="tag">
-              STM32
-            </span>
-
-            <span class="tag">
-              UART
-            </span>
-
-            <span class="tag">
-              SPI
-            </span>
-
-            <span class="tag">
-              I²C
-            </span>
-
-          </div>
-
-        </article>
-
-
-        <article class="card">
-
-          <h3>
-            Industrial Automation Controllers
-          </h3>
-
-          <p>
-            Worked on embedded firmware, DWIN HMI logic, controller
-            interfacing, Modbus communication, hardware integration,
-            and functional testing for industrial automation systems.
-          </p>
-
-          <div class="tags">
-
-            <span class="tag">
-              STM32
-            </span>
-
-            <span class="tag">
-              AVR
-            </span>
-
-            <span class="tag">
-              DWIN HMI
-            </span>
-
-            <span class="tag">
-              Modbus
-            </span>
-
-          </div>
-
-        </article>
-
+        </details>
 
       </div>
 
@@ -1258,34 +1675,6 @@
 
   </footer>
 
-
-  <!-- ==================================================
-       JAVASCRIPT
-       ================================================== -->
-
-  <script>
-
-    function showProject(id, button) {
-
-      document
-        .querySelectorAll(".project-content")
-        .forEach(function (element) {
-          element.style.display = "none";
-        });
-
-      document.getElementById(id).style.display = "block";
-
-      document
-        .querySelectorAll(".tab-button")
-        .forEach(function (btn) {
-          btn.classList.remove("active");
-        });
-
-      button.classList.add("active");
-
-    }
-
-  </script>
 
 </body>
 </html>
